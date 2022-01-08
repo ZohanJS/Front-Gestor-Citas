@@ -2,11 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import clienteAxios from '../../config/axios';
+import './tables.css';
+
 
 function Cliente({ cliente }) {
+	
 	// extraer los valores
 	const { _id, nombre, apellidos, email, telefono } = cliente;
-
+	
+	
 	// Eliminar cliente
 	const eliminarCliente = idCliente => {
 		Swal.fire({
@@ -34,36 +38,18 @@ function Cliente({ cliente }) {
 		});
 	};
 
+	
 	return (
-		<li className="cliente">
-			<div className="info-cliente">
-				<p className="nombre">
-					{nombre} {apellidos}
-				</p>
-				<p>{email}</p>
-				<p>Tel: {telefono}</p>
-			</div>
-			<div className="acciones">
-				<Link to={`/clientes/editar/${_id}`} className="btn btn-azul">
-					<i className="fas fa-pen-alt" />
-					Editar Cliente
-				</Link>
 
-				<Link to={`/pedidos/nuevo/${_id}`} className="btn btn-amarillo">
-					<i className="fas fa-plus" />
-					Nuevo Pedido
-				</Link>
-
-                <button 
-                    type="button" 
-                    className="btn btn-rojo btn-eliminar" 
-                    onClick={() => eliminarCliente(_id)}
-                >
-					<i className="fas fa-times" />
-					Eliminar Cliente
-				</button>
-			</div>
-		</li>
-	);
+		
+              <tr className="info-cliente">
+                <td>{nombre} {apellidos}</td>
+                <td>{email}</td>
+                <td>{telefono}</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+		
+	) 
 }
 export default Cliente;

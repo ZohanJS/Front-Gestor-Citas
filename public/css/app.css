@@ -1,5 +1,5 @@
 :root {
-    --fontTexto:  'Raleway', sans-serif;
+    --fontTexto:  'Ubuntu';
     --fontHeading: 'Staatliches', cursive;
 
     /** Colores **/
@@ -12,7 +12,7 @@
     /** gris **/
     --gris: #969696;
     --grisOscuro : #707070;
-    --grisClaro: rgb(243, 243, 243);
+    --grisClaro:  #EDF5FF;
 }
 body {
     background-color: var(--grisClaro);
@@ -45,6 +45,13 @@ h2 {
     max-width: 1400px;
     margin: 0 auto;
     width: 95%;
+}
+
+.my-custom-scrollbar {
+    position: relative;
+    height: 200px;
+    overflow: auto;
+    
 }
 
 /** BOTONES **/
@@ -447,7 +454,4 @@ h3.resumen-titulo {
 }
 .login h2 {
     text-align: center;
-}
-.login .contenedor-formulario {
-
 }

@@ -56,25 +56,39 @@ function Clientes(props) {
 
     
     return (
-        <Fragment>
-        
-            <h2>Clientes</h2>
-
-            <Link to={"/clientes/nuevo"} className="btn btn-verde nvo-cliente"> 
-                <i className="fas fa-plus-circle"></i>
-                Nuevo Cliente
-            </Link>
-
-            <ul className="listado-clientes">
-                {clientes.map(cliente => (
-                    <Cliente 
-                        key={cliente._id}
-                        cliente={cliente}
-                    />
+      <Fragment>
+        <h2>Odontólogos</h2>
+        <Link to={"/clientes/nuevo"} className="btn btn-verde nvo-cliente">
+          <i className="fas fa-plus-circle"></i>
+          Nuevo Odontólogo
+        </Link>
+        <div class="contenedorTable">
+          <div class="tableTitle">
+            <h2>Consultas</h2>
+          </div>
+          <div class="tableModel">
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+                    <th>Documento</th>
+                    <th>Telefono</th>
+                    <th>Horario</th>
+                  </tr>
+                </thead> 
+                <tbody className="listado-clientes">
+                {clientes.map((cliente) => (
+                    <Cliente key={cliente._id} cliente={cliente} />
                 ))}
-            </ul>
-
-        </Fragment>
-    )
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        
+      </Fragment>
+    );
 }
 export default withRouter(Clientes);
