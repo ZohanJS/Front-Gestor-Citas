@@ -1,19 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import clienteAxios from '../../config/axios';
 import './tables.css';
-
-
-function Cliente({ cliente }) {
-	
-	// extraer los valores
-	const { _id, nombre, apellidos, email, telefono } = cliente;
-	
-	
-	// Eliminar cliente
-	const eliminarCliente = idCliente => {
 import odontologoAxios from '../../config/axios';
+
 
 function Odontologo({ odontologo }) {
 	// extraer los valores
@@ -50,7 +40,7 @@ function Odontologo({ odontologo }) {
 	return (
 
 		
-              <tr className="info-cliente">
+              <tr className="info-odontologo">
                 <td>{nombre} {apellidos}</td>
                 <td>{email}</td>
                 <td>{telefono}</td>

@@ -56,10 +56,9 @@ function Odontologos(props) {
 
     
     return (
-<<<<<<< HEAD:src/componentes/clientes/Clientes.js
       <Fragment>
         <h2>Odontólogos</h2>
-        <Link to={"/clientes/nuevo"} className="btn btn-verde nvo-cliente">
+        <Link to={"/odontologos/nuevo"} className="btn btn-verde nvo-cliente">
           <i className="fas fa-plus-circle"></i>
           Nuevo Odontólogo
         </Link>
@@ -79,26 +78,9 @@ function Odontologos(props) {
                     <th>Horario</th>
                   </tr>
                 </thead> 
-                <tbody className="listado-clientes">
-                {clientes.map((cliente) => (
-                    <Cliente key={cliente._id} cliente={cliente} />
-=======
-        <Fragment>
-        
-            <h2>Odontologos</h2>
-
-            <Link to={"/odontologos/nuevo"} className="btn btn-verde nvo-cliente"> 
-                <i className="fas fa-plus-circle"></i>
-                Nuevo Odontologo
-            </Link>
-
-            <ul className="listado-odontologos">
-                {odontologos.map(odontologo => (
-                    <Odontologo 
-                        key={odontologo._id}
-                        odontologo={odontologo}
-                    />
->>>>>>> 3f10d618fa14771e33e789a3dc3b1ea4e576ea8d:src/componentes/odontologos/Odontologos.js
+                <tbody className="listado-odontologos">
+                {odontologos.map((odontologo) => (
+                    <Odontologo key={odontologo._id} odontologo={odontologo} />
                 ))}
                 </tbody>
               </table>

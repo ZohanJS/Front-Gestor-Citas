@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 
 import { Link } from 'react-router-dom';
 import { CRMContext } from '../../context/CRMContext';
+import './navegacion.css';
 
 const Navegacion = () => {
 
