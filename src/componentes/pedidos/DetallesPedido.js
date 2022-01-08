@@ -2,13 +2,13 @@ import React from 'react';
 
 function DetallesPedido({pedido}) {
 
-    const {cliente} = pedido;
+    const {odontologo} = pedido;
 
     return(
         <li className="pedido">
             <div className="info-pedido">
                 <p className="id">ID: 0192019201291201</p>
-                <p className="nombre">Cliente: {cliente.nombre} {cliente.apellido} </p>
+                <p className="nombre">Odontologo: {odontologo.nombre} {odontologo.apellido} </p>
 
                 <div className="articulos-pedido">
                     <p className="productos">Artículos Pedido: </p>

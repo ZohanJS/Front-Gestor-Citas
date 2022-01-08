@@ -14,8 +14,8 @@ const Navegacion = () => {
             <h2>Administración</h2>
 
             <nav className="navegacion">
-                <Link to={"/"} className="clientes">Clientes</Link>
-                <Link to={"/productos"} className="productos">Productos</Link>
+                <Link to={"/sedes"} className="sedes">Sedes</Link>
+                <Link to={"/"} className="odontologos">Odontologos</Link>
                 <Link to={"/pedidos"} className="pedidos">Pedidos</Link>
             </nav>
         </aside>

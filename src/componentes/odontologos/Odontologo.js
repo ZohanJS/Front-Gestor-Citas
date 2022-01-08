@@ -1,27 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import clienteAxios from '../../config/axios';
+import odontologoAxios from '../../config/axios';
 
-function Cliente({ cliente }) {
+function Odontologo({ odontologo }) {
 	// extraer los valores
-	const { _id, nombre, apellidos, email, telefono } = cliente;
+	const { _id, nombre, apellidos, email, telefono } = odontologo;
 
-	// Eliminar cliente
-	const eliminarCliente = idCliente => {
+	// Eliminar odontologo
+	const eliminarOdontologo = idOdontologo => {
 		Swal.fire({
 			title: '¿Estas seguro?',
-			text: "Un cliente eliminado no se puede recuperar",
+			text: "Un odontologo eliminado no se puede recuperar",
 			type: 'warning',
 			showCancelButton: true,
-			confirmButtonColor: '#3085d6',
-			cancelButtonColor: '#d33',
+			confirmButtonColor: '#3D82DB',
+			cancelButtonColor: '#A01C48',
             confirmButtonText: 'Si, eliminar!',
             cancelButtonText: 'Cancelar'
 		}).then((result) => {
 			if (result.value) {
                 // Llamado a axios
-                clienteAxios.delete(`/clientes/${idCliente}`)
+                odontologoAxios.delete(`/odontologos/${idOdontologo}`)
                     .then(res => {
                         Swal.fire(  
                             'Eliminado', 
@@ -35,8 +35,8 @@ function Cliente({ cliente }) {
 	};
 
 	return (
-		<li className="cliente">
-			<div className="info-cliente">
+		<li className="odontologo">
+			<div className="info-odontologo">
 				<p className="nombre">
 					{nombre} {apellidos}
 				</p>
@@ -44,9 +44,9 @@ function Cliente({ cliente }) {
 				<p>Tel: {telefono}</p>
 			</div>
 			<div className="acciones">
-				<Link to={`/clientes/editar/${_id}`} className="btn btn-azul">
+				<Link to={`/odontologo/editar/${_id}`} className="btn btn-azul">
 					<i className="fas fa-pen-alt" />
-					Editar Cliente
+					Editar Odontologo
 				</Link>
 
 				<Link to={`/pedidos/nuevo/${_id}`} className="btn btn-amarillo">
@@ -57,13 +57,13 @@ function Cliente({ cliente }) {
                 <button 
                     type="button" 
                     className="btn btn-rojo btn-eliminar" 
-                    onClick={() => eliminarCliente(_id)}
+                    onClick={() => eliminarOdontologo(_id)}
                 >
 					<i className="fas fa-times" />
-					Eliminar Cliente
+					Eliminar Odontologo
 				</button>
 			</div>
 		</li>
 	);
 }
-export default Cliente;
+export default Odontologo;

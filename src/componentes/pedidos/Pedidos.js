@@ -1,5 +1,5 @@
 import React, {useEffect, useState, Fragment} from 'react';
-import clienteAxios from '../../config/axios';
+import odontologoAxios from '../../config/axios';
 import DetallesPedido from './DetallesPedido';
 
 function Pedidos() {
@@ -9,7 +9,7 @@ function Pedidos() {
     useEffect(() => {
         const consultarAPI = async () => {
             // obtener los pedidos
-            const resultado = await clienteAxios.get('/pedidos');
+            const resultado = await odontologoAxios.get('/pedidos');
             guardarPedidos(resultado.data);
         }
 

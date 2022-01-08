@@ -8,13 +8,13 @@ import Header from './componentes/layout/Header';
 import Navegacion from './componentes/layout/Navegacion';
 
 /** Componentes */
-import Clientes from './componentes/clientes/Clientes';
-import NuevoCliente from './componentes/clientes/NuevoCliente';
-import EditarCliente from './componentes/clientes/EditarCliente';
+import Odontologos from './componentes/odontologos/Odontologos';
+import NuevoOdontologo from './componentes/odontologos/NuevoOdontologo';
+import EditarOdontologo from './componentes/odontologos/EditarOdontologo';
 
-import Productos from './componentes/productos/Productos';
-import EditarProducto from './componentes/productos/EditarProducto';
-import NuevoProducto from './componentes/productos/NuevoProducto';
+import Sedes from './componentes/sedes/Sedes';
+import EditarSede from './componentes/sedes/EditarSede';
+import NuevaSede from './componentes/sedes/NuevaSede';
 
 import Pedidos from './componentes/pedidos/Pedidos';
 import NuevoPedido from './componentes/pedidos/NuevoPedido';
@@ -40,13 +40,13 @@ function App() {
 
                   <main className="caja-contenido col-9">
                         <Switch>
-                            <Route exact path="/" component={Clientes} />
-                            <Route exact path="/clientes/nuevo" component={NuevoCliente} />
-                            <Route exact path="/clientes/editar/:id" component={EditarCliente} />
+                            <Route exact path="/" component={Odontologos} />
+                            <Route exact path="/odontologos/nuevo" component={NuevoOdontologo} />
+                            <Route exact path="/odontologos/editar/:id" component={EditarOdontologo} />
 
-                            <Route exact path="/productos" component={Productos} />
-                            <Route exact path="/productos/nuevo" component={NuevoProducto} />
-                            <Route exact path="/productos/editar/:id" component={EditarProducto} />
+                            <Route exact path="/sedes" component={Sedes} />
+                            <Route exact path="/sedes/nuevo" component={NuevaSede} />
+                            <Route exact path="/sedes/editar/:id" component={EditarSede} />
 
                             <Route exact path="/pedidos" component={Pedidos} />
                             <Route exact path="/pedidos/nuevo/:id" component={NuevoPedido} />

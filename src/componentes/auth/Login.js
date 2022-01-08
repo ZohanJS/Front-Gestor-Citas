@@ -1,7 +1,7 @@
 import React, {useState, useContext} from 'react';
 import Swal from 'sweetalert2';
 import { withRouter } from 'react-router-dom';
-import clienteAxios from '../../config/axios';
+import odontologoAxios from '../../config/axios';
 
 // Context
 import { CRMContext } from '../../context/CRMContext';
@@ -23,7 +23,7 @@ function Login(props){
         // autenticar al usuario
 
         try {
-            const respuesta = await clienteAxios.post('/api/auth/login', credenciales);
+            const respuesta = await odontologoAxios.post('/api/auth/login', credenciales);
             console.log(respuesta);
             // extraer el token y colocarlo en localstorage
             const { token } = respuesta.data;
