@@ -24,7 +24,7 @@ const Header = (props) => {
         <header className="barra">
             <div className="contenedor">
                 <div className="contenido-barra">
-                    <h1>CRM - Administrador de Clientes</h1>
+                    <h1>Dashboard admin</h1>
 
 
                     { auth.auth ? (

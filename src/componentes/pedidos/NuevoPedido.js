@@ -1,29 +1,30 @@
 import React, {useState, useEffect, Fragment} from 'react';
-import clienteAxios from '../../config/axios';
+import odontologoAxios from '../../config/axios';
 
 import FormBuscarProducto from './FormBuscarProducto';
 import FormCantidadProducto from './FormCantidadProducto';
 import Swal from 'sweetalert2';
 import { withRouter } from 'react-router-dom';
+import Odontologo from '../odontologos/Odontologo';
 
 function NuevoPedido(props) {
 
-    // extraer ID de cliente
+    // extraer ID de odontologo
     const { id } = props.match.params;
 
     // state
-    const [cliente, guardarCliente] = useState({});
+    const [odontologo, guardarOdontologo] = useState({});
     const [busqueda, guardarBusqueda] = useState('');
     const [productos, guardarProductos] = useState([]);
     const [total, guardarTotal] = useState(0);
 
     useEffect(() => {
 
-        // obtener el cliente
+        // obtener el odonlogo
         const consultarAPI = async () => {
-            // consultar el cliente actual
-            const resultado = await clienteAxios.get(`/clientes/${id}`);
-            guardarCliente(resultado.data);
+            // consultar el odontologo actual
+            const resultado = await odontologoAxios.get(`/odontologos/${id}`);
+            guardarOdontologo(resultado.data);
         }
 
         // llamar a la api
@@ -38,7 +39,7 @@ function NuevoPedido(props) {
         e.preventDefault();
 
         // obtener los productos de la busqueda
-        const resultadoBusqueda = await clienteAxios.post(`/productos/busqueda/${busqueda}`);
+        const resultadoBusqueda = await odontologoAxios.post(`/productos/busqueda/${busqueda}`);
 
         // si no hay resultados una alerta, contrario agregarlo al state
         if(resultadoBusqueda.data[0]) {
@@ -127,13 +128,13 @@ function NuevoPedido(props) {
 
         // construir el objeto
         const pedido = {
-            "cliente" : id, 
+            "odontologo" : id, 
             "pedido" : productos, 
             "total" : total
         }
 
         // almacenarlo en la BD
-        const resultado = await clienteAxios.post(`/pedidos/nuevo/${id}`, pedido);
+        const resultado = await odontologoAxios.post(`/pedidos/nuevo/${id}`, pedido);
 
         // leer resultado
         if(resultado.status === 200) {
@@ -163,9 +164,9 @@ function NuevoPedido(props) {
             <h2>Nuevo Pedido</h2>
 
                 <div className="ficha-cliente">
-                    <h3>Datos de Cliente</h3>
-                    <p>Nombre: {cliente.nombre} {cliente.apellido}</p>
-                    <p>Teléfono: {cliente.telefono}</p>
+                    <h3>Datos de Odontologo</h3>
+                    <p>Nombre: {odontologo.nombre} {odontologo.apellido}</p>
+                    <p>Teléfono: {odontologo.telefono}</p>
                 </div>
 
                 <FormBuscarProducto 

@@ -1,17 +1,17 @@
 import React, {useEffect, useState, useContext,  Fragment} from 'react';
 import { Link } from 'react-router-dom';
 // importar cliente axios
-import clienteAxios from '../../config/axios';
-import Producto from './Producto';
+import odontologoAxios from '../../config/axios';
+import Sede from './Sede';
 import Spinner from '../layout/Spinner';
 
 // import el Context
 import { CRMContext } from '../../context/CRMContext';
 
-function Productos(props) {
+function Sedes(props) {
 
-    // productos = state, guardarproductos = funcion para guardar el state
-    const [productos, guardarProductos] = useState([]);
+    // sedes = state, guardarsedes = funcion para guardar el state
+    const [sedes, guardarSedes] = useState([]);
 
     // utilizar valores del context
     const [auth, guardarAuth ] = useContext( CRMContext );
@@ -23,12 +23,12 @@ function Productos(props) {
             // Query a la API
             const consultarAPI = async () => {
                 try {
-                    const productosConsulta = await clienteAxios.get('/productos', {
+                    const sedesConsulta = await odontologoAxios.get('/sedes', {
                         headers: {
                             Authorization : `Bearer ${auth.token}`
                         }
                     });
-                    guardarProductos(productosConsulta.data);
+                    guardarSedes(sedesConsulta.data);
                 } catch (error) {
                     // Error con authorizacion
                     if(error.response.status = 500) {
@@ -42,7 +42,7 @@ function Productos(props) {
         } else {
             props.history.push('/iniciar-sesion');
         }
-    }, [productos]);
+    }, [sedes]);
 
     // Si el state esta como false
     if(!auth.auth) {
@@ -51,27 +51,27 @@ function Productos(props) {
 
 
     // spinner de carga
-    if(!productos.length) return <Spinner /> 
+    if(!sedes.length) return <Spinner /> 
 
 
     return (
         <Fragment>
-            <h2>Productos</h2>
+            <h2>Sedes</h2>
 
-            <Link to={'/productos/nuevo'} className="btn btn-verde nvo-cliente"> 
+            <Link to={'/sedes/nuevo'} className="btn btn-verde nvo-odontologo"> 
                 <i className="fas fa-plus-circle"></i>
-                Nuevo Producto
+                Nueva Sede
             </Link>
 
-            <ul className="listado-productos">
-                {productos.map(producto => (
-                    <Producto 
-                        key={producto._id}
-                        producto={producto}
+            <ul className="listado-sedes">
+                {sedes.map(sede => (
+                    <Sede 
+                        key={sede._id}
+                        sede={sede}
                     />
                 ))}
             </ul>
         </Fragment>
     )
 }
-export default Productos;
+export default Sedes;

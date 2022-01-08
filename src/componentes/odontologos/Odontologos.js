@@ -1,18 +1,18 @@
 import React, { useEffect, useState, useContext, Fragment } from 'react';
 
 // importar cliente axios
-import clienteAxios from '../../config/axios';
-import Cliente from './Cliente';
+import odontologoAxios from '../../config/axios';
+import Odontologo from './Odontologo';
 import Spinner from '../layout/Spinner';
 import { Link, withRouter } from 'react-router-dom';
 
 // import el Context
 import { CRMContext } from '../../context/CRMContext';
 
-function Clientes(props) {
+function Odontologos(props) {
     // Trabajar con el state
-    // clientes = state,  guardarClientes = funcion para guardar el state
-    const [ clientes, guardarClientes ] = useState([]);
+    // Odontologos = state,  guardarOdontologos = funcion para guardar el state
+    const [ odontologos, guardarOdontologos ] = useState([]);
 
     // utilizar valores del context
     const [auth, guardarAuth ] = useContext( CRMContext );
@@ -24,14 +24,14 @@ function Clientes(props) {
             // Query a la API
             const consultarAPI = async () => {
                 try {
-                    const clientesConsulta = await clienteAxios.get('/api/odontologo', {
+                    const odontologosConsulta = await odontologoAxios.get('/api/odontologo', {
                         headers: {
                             Authorization : `Bearer ${auth.token}`
                         }
                     });
-                    console.log(clientesConsulta.data);
+                    console.log(odontologosConsulta.data);
                     // colocar el resultado en el state
-                    guardarClientes(clientesConsulta.data["odontologos"]);
+                    guardarOdontologos(odontologosConsulta.data["odontologos"]);
 
                 } catch (error) {
                     // Error con authorizacion
@@ -44,7 +44,7 @@ function Clientes(props) {
         } else {
             props.history.push('/iniciar-sesion');
         }
-    }, [clientes] );
+    }, [odontologos] );
 
 
     // Si el state esta como false
@@ -52,10 +52,11 @@ function Clientes(props) {
         props.history.push('/iniciar-sesion');
     }
 
-    if(!clientes.length) return <Spinner /> 
+    if(!odontologos.length) return <Spinner /> 
 
     
     return (
+<<<<<<< HEAD:src/componentes/clientes/Clientes.js
       <Fragment>
         <h2>Odontólogos</h2>
         <Link to={"/clientes/nuevo"} className="btn btn-verde nvo-cliente">
@@ -81,6 +82,23 @@ function Clientes(props) {
                 <tbody className="listado-clientes">
                 {clientes.map((cliente) => (
                     <Cliente key={cliente._id} cliente={cliente} />
+=======
+        <Fragment>
+        
+            <h2>Odontologos</h2>
+
+            <Link to={"/odontologos/nuevo"} className="btn btn-verde nvo-cliente"> 
+                <i className="fas fa-plus-circle"></i>
+                Nuevo Odontologo
+            </Link>
+
+            <ul className="listado-odontologos">
+                {odontologos.map(odontologo => (
+                    <Odontologo 
+                        key={odontologo._id}
+                        odontologo={odontologo}
+                    />
+>>>>>>> 3f10d618fa14771e33e789a3dc3b1ea4e576ea8d:src/componentes/odontologos/Odontologos.js
                 ))}
                 </tbody>
               </table>
@@ -91,4 +109,4 @@ function Clientes(props) {
       </Fragment>
     );
 }
-export default withRouter(Clientes);
+export default withRouter(Odontologos);

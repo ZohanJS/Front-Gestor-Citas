@@ -1,18 +1,17 @@
-import React, {Fragment, useState, useContext} from 'react';
+import React, {Fragment, useState, useEffect} from 'react';
 import Swal from 'sweetalert2';
 import { withRouter } from 'react-router-dom'; 
-import clienteAxios from '../../config/axios';
+import odontologoAxios from '../../config/axios';
 
-// import el Context
-import { CRMContext } from '../../context/CRMContext';
 
-function NuevoCliente({history}){
 
-    // utilizar valores del context
-    const [auth, guardarAuth ] = useContext( CRMContext );
+function EditarOdontologo(props){
 
-    // cliente = state, guardarcliente = funcion para guardar el state
-    const[cliente, guardarCliente] = useState({
+    // obtener el ID
+    const { id } = props.match.params;
+
+    // odontologo = state, datosOdontologo = funcion para guardar el state
+    const[odontologo, datosOdontologo] = useState({
         nombre: '',
         apellido: '',
         empresa : '',
@@ -20,47 +19,60 @@ function NuevoCliente({history}){
         telefono :''
     });
 
+    // Query a la API
+    const consultarAPI = async () => {
+        const odontologoConsulta = await odontologoAxios.get(`/odontologos/${id}`);
+
+       // colocar en el state
+       datosOdontologo(odontologoConsulta.data);
+    }
+
+    // useEffect, cuando el componente carga
+    useEffect( () => {
+        consultarAPI();
+    }, []);
+
     // leer los datos del formulario
     const actualizarState = e => {
         // Almacenar lo que el usuario escribe en el state
-        guardarCliente({
+        datosOdontologo({
             // obtener una copia del state actual
-            ...cliente, 
+            ...odontologo, 
             [e.target.name] : e.target.value
         })
-
     }
 
-    // Añade en la REST API un cliente nuevo
-    const agregarCliente = e => {
+    // Envia una petición por axios para actualizar el odontologo
+    const actualizarOdontologo = e => {
         e.preventDefault();
 
-        // enviar petición
-        clienteAxios.post('/clientes', cliente)
+        // enviar petición por axios
+        odontologoAxios.put(`/odontologos/${odontologo._id}`, odontologo) 
             .then(res => {
                 // validar si hay errores de mongo 
                 if(res.data.code === 11000) {
                     Swal.fire({
                         type: 'error',
                         title: 'Hubo un error',
-                        text: 'Ese cliente ya esta registrado'
+                        text: 'Ese odontologo ya esta registrado'
                     })
                 } else {
                     Swal.fire(
-                        'Se agregó el Cliente',
-                        res.data.mensaje,
+                        'Correcto',
+                        'Se actualizó Correctamente',
                         'success'
                     )
                 }
-                // Redireccionar
-                history.push('/');
-            });
+
+                // redireccionar
+                props.history.push('/');
+            })
     }
 
     // Validar el formulario
-    const validarCliente = () => {
+    const validarOdontologo = () => {
         // Destructuring
-        const { nombre, apellido, email, empresa, telefono} = cliente;
+        const { nombre, apellido, email, empresa, telefono} = odontologo;
 
         // revisar que las propiedades del state tengan contenido
         let valido = !nombre.length || !apellido.length || !email.length || !empresa.length || !telefono.length;
@@ -69,63 +81,61 @@ function NuevoCliente({history}){
         return valido;
     }
 
-    // verificar si el usuario esta autenticado o no
-    if(!auth.auth && (localStorage.getItem('token') === auth.token ) ) {
-        history.push('/iniciar-sesion');
-    }
-
     return (
-
-
         <Fragment>
-            <h2>Nuevo Cliente</h2>
+            <h2>Editar Odontologo</h2>
             
             <form
-                onSubmit={agregarCliente}
+                onSubmit={actualizarOdontologo}
             >
                 <legend>Llena todos los campos</legend>
                 <div className="campo">
                     <label>Nombre:</label>
                     <input  type="text" 
-                            placeholder="Nombre Cliente" 
+                            placeholder="Nombre Odontologo" 
                             name="nombre"
                             onChange={actualizarState}
+                            value={odontologo.nombre}
                     />
                 </div>
 
                 <div className="campo">
                     <label>Apellido:</label>
                     <input type="text" 
-                          placeholder="Apellido Cliente" 
+                          placeholder="Apellido Odontologo" 
                           name="apellido" 
                           onChange={actualizarState}
+                          value={odontologo.apellido}
                     />
                 </div>
             
                 <div className="campo">
                     <label>Empresa:</label>
                     <input type="text" 
-                          placeholder="Empresa Cliente" 
+                          placeholder="Empresa Odontologo" 
                           name="empresa" 
                           onChange={actualizarState}
+                          value={odontologo.empresa}
                     />
                 </div>
 
                 <div className="campo">
                     <label>Email:</label>
                     <input type="email" 
-                            placeholder="Email Cliente" 
+                            placeholder="Email Odontologo" 
                             name="email" 
                             onChange={actualizarState}
+                            value={odontologo.email}
                     />
                 </div>
 
                 <div className="campo">
                     <label>Teléfono:</label>
                     <input type="tel" 
-                        placeholder="Teléfono Cliente" 
+                        placeholder="Teléfono Odontologo" 
                         name="telefono" 
                         onChange={actualizarState}
+                        value={odontologo.telefono}
                     />
                 </div>
 
@@ -133,8 +143,8 @@ function NuevoCliente({history}){
                     <input 
                         type="submit" 
                         className="btn btn-azul" 
-                        value="Agregar Cliente" 
-                        disabled={ validarCliente() }
+                        value="Guardar Cambios" 
+                        disabled={ validarOdontologo() }
                     />
                 </div>
             </form>
@@ -143,4 +153,4 @@ function NuevoCliente({history}){
 }
 
 // HOC, es una función que toma un componente y retorna un nuevo componente
-export default  withRouter(NuevoCliente);
+export default  withRouter(EditarOdontologo);

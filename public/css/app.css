@@ -3,7 +3,7 @@
     --fontHeading: 'Staatliches', cursive;
 
     /** Colores **/
-    --azul : #00487C;
+    --azul : rgb(61, 130, 219);
     --rojo : #A01C48;
     --naranja : #F58549;
     --amarillo: #ECA400;
@@ -38,7 +38,7 @@ h1{
 }
 h2 {
     font-family: var(--fontTexto);
-    color: var(--grisOscuro);
+    color: white;
     font-size: 3rem;
 }
 .contenedor {
@@ -103,7 +103,7 @@ h2 {
 .btn:disabled {
     opacity: .4;
 }
-.nvo-cliente {
+.nvo-odontologo {
     padding: 2rem 4rem;
     width: auto;
 }
@@ -151,50 +151,8 @@ h2 {
     }
 }
 .contenido-principal{
-    margin-top: 4rem;
-}
-
-/** Navegacion **/
-.sidebar {
-    padding-top: 1.8rem;
-}
-
-.navegacion a {
-    display: block;
-    font-family: var(--fontTexto);
-    color: var(--grisOscuro);
-    margin-bottom: 2rem;
-    font-size: 1.8rem;
-    position: relative;
-    padding-left: 5rem;
-    padding-top: 2rem;
-}
-.navegacion a::before {
-    display: inline-block;
-    font-style: normal;
-    font-variant: normal;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
-    font-size: 3rem;
-    margin-right: 1rem;
-    position: absolute;
-    left: 0;
-    top: 1rem;
-}
-.navegacion a.clientes::before {
-    font-family: "Font Awesome 5 Free"; 
-    font-weight: 900; 
-    content: "\f0c0";
-}
-.navegacion a.productos::before {
-    font-family: "Font Awesome 5 Free"; 
-    font-weight: 900; 
-    content: "\f468";
-}
-.navegacion a.pedidos::before {
-    font-family: "Font Awesome 5 Free"; 
-    font-weight: 900; 
-    content: "\f02d";
+    margin-top: 0rem;
+    margin-left: 0rem;
 }
 
 /** Caja **/
@@ -214,39 +172,39 @@ h2 {
     border-radius: 1rem;
 }
 
-/** Mostrar Clientes **/
-.listado-clientes,
-.listado-productos,
+/** Mostrar Odontologos **/
+.listado-odontologos,
+.listado-sedes,
 .listado-pedidos {
     list-style: none;
     padding: 0;
 }
-.cliente,
-.producto,
+.odontologo,
+.sede,
 .pedido,
 .resumen li {
     padding: 2rem 0;
     border-bottom: 1px solid var(--grisClaro);
 }
-.cliente:last-of-type,
-.producto:last-of-type, 
+.odontologo:last-of-type,
+.sede:last-of-type, 
 .pedido:last-of-type{
     border-bottom: 0;
 }
 @media (min-width: 768px) {
-    .cliente,
-    .producto,
+    .odontologo,
+    .sede,
     .pedido {
         display: flex;
         justify-content: space-between;
     }
-    .cliente .info-cliente,
-    .producto .info-producto,
+    .odontologo .info-odontologo,
+    .sede .info-sede,
     .pedido .info-pedido {
         flex: 0 0 calc(70% - 1rem);
     }
-    .cliente .acciones,
-    .producto .acciones,
+    .odontologo .acciones,
+    .sede .acciones,
     .pedido .acciones {
         flex: 0 0 calc(30% - 1rem);
         padding: 2rem 0;
@@ -256,7 +214,7 @@ h2 {
     } 
     
     .pedido .acciones,
-    .producto .acciones  {
+    .sede .acciones  {
         justify-content: flex-start;
     }
 }
@@ -270,26 +228,26 @@ h2 {
 }
 
 @media (min-width: 768px) {
-    .cliente .acciones a:last-of-type,
-    .producto .acciones a:last-of-type, 
+    .odontologo .acciones a:last-of-type,
+    .sede .acciones a:last-of-type, 
     .pedido .acciones a:last-of-type {
         margin-bottom: 0;
     } 
 }
-.cliente p,
-.producto p,
+.odontologo p,
+.sede p,
 .pedido p {
     margin: 2rem 0;
 }
-.cliente .nombre,
-.producto .nombre,
+.odontologo .nombre,
+.sede .nombre,
 .pedido .id,
 .resumen .nombre {
     font-size: 2.4rem;
     color: var(--azul);
 }
-.cliente .empresa,
-.pedido .nombre, 
+.odontologo .empresa,
+.sede .nombre, 
 .resumen .precio{
     font-weight: 700;
     font-size: 2rem;
@@ -369,7 +327,7 @@ form .campo input[readonly] {
     justify-content: space-around;
     padding: 2rem;
 }
-.resumen li .texto-producto, 
+.resumen li .texto-sede, 
 .resumen li .acciones  {
     flex: 0 0 calc(50% - 2rem);
 }
@@ -425,7 +383,7 @@ form .campo input[readonly] {
     width: 60rem;
 }
 
-.ficha-cliente {
+.ficha-odontologo {
     background-color: var(--grisClaro);
     padding: 1rem 4rem;
 }

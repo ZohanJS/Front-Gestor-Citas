@@ -13,19 +13,27 @@ function Cliente({ cliente }) {
 	
 	// Eliminar cliente
 	const eliminarCliente = idCliente => {
+import odontologoAxios from '../../config/axios';
+
+function Odontologo({ odontologo }) {
+	// extraer los valores
+	const { _id, nombre, apellidos, email, telefono } = odontologo;
+
+	// Eliminar odontologo
+	const eliminarOdontologo = idOdontologo => {
 		Swal.fire({
 			title: '¿Estas seguro?',
-			text: "Un cliente eliminado no se puede recuperar",
+			text: "Un odontologo eliminado no se puede recuperar",
 			type: 'warning',
 			showCancelButton: true,
-			confirmButtonColor: '#3085d6',
-			cancelButtonColor: '#d33',
+			confirmButtonColor: '#3D82DB',
+			cancelButtonColor: '#A01C48',
             confirmButtonText: 'Si, eliminar!',
             cancelButtonText: 'Cancelar'
 		}).then((result) => {
 			if (result.value) {
                 // Llamado a axios
-                clienteAxios.delete(`/clientes/${idCliente}`)
+                odontologoAxios.delete(`/odontologos/${idOdontologo}`)
                     .then(res => {
                         Swal.fire(  
                             'Eliminado', 
@@ -52,4 +60,4 @@ function Cliente({ cliente }) {
 		
 	) 
 }
-export default Cliente;
+export default Odontologo;
