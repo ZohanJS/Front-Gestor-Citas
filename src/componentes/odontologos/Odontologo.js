@@ -1,8 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import './tables.css';
 import odontologoAxios from '../../config/axios';
+import {Button} from 'reactstrap';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faPen, faTrashAlt} from '@fortawesome/free-solid-svg-icons';
+
+
 
 
 function Odontologo({ odontologo }) {
@@ -40,14 +44,18 @@ function Odontologo({ odontologo }) {
 	return (
 
 		
-              <tr className="info-odontologo">
+              <tr>
                 <td>{nombre} {apellidos}</td>
                 <td>{email}</td>
                 <td>{telefono}</td>
                 <td>0</td>
                 <td>0</td>
+				<td><div>
+					<Button className="btnIcon" id="delete"><FontAwesomeIcon icon={faTrashAlt}></FontAwesomeIcon></Button> 
+					<Button className="btnIcon" id="edit"><FontAwesomeIcon icon={faPen}></FontAwesomeIcon></Button> 	
+					</div></td>
               </tr>
-		
-	) 
+			
+			) 
 }
 export default Odontologo;
