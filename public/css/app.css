@@ -126,8 +126,8 @@ h2 {
     }
 }
 .barra {
-    background-color: var(--azul);
-    padding: 2rem 0;
+    background-color: var(--gris);
+    padding: 2rem 0rem;
 }
 .barra h1 {
     margin:0;
@@ -164,6 +164,7 @@ h2 {
 }
 .caja-contenido {
     background-color: white;
+    margin: 1.5rem;
     padding: 2rem 3rem;
     min-height: 80rem;
     -webkit-box-shadow: 0px 7px 6px -5px rgba(0,0,0,0.36);
