@@ -5,6 +5,8 @@ import odontologoAxios from '../../config/axios';
 import Odontologo from './Odontologo';
 import Spinner from '../layout/Spinner';
 import { Link, withRouter } from 'react-router-dom';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faPlus} from '@fortawesome/free-solid-svg-icons';
 
 // import el Context
 import { CRMContext } from '../../context/CRMContext';
@@ -58,27 +60,32 @@ function Odontologos(props) {
     return (
       <Fragment>
         <h2>Odontólogos</h2>
-        <Link to={"/odontologos/nuevo"} className="btn btn-verde nvo-cliente">
-          <i className="fas fa-plus-circle"></i>
-          Nuevo Odontólogo
-        </Link>
-        <div class="contenedorTable">
-          <div class="tableTitle">
-            <h2>Consultas</h2>
+        
+        <Link to={"/odontologos/nuevo"}>
+          <div className="btnAdd">
+            <FontAwesomeIcon icon={faPlus} className="add"></FontAwesomeIcon>
+            <p className="add" id="addM">Agregar Médico</p>
           </div>
-          <div class="tableModel">
-            <div class="table-responsive">
+          
+        </Link>
+        <div className="contenedorTable">
+          <div className="tableTitle">
+            <h2>Odontólogos</h2>
+          </div>
+          <div className="tableModel">
+            <div className="table-responsive">
               <table>
                 <thead>
                   <tr>
                     <th>Nombre</th>
                     <th>Correo</th>
-                    <th>Documento</th>
                     <th>Telefono</th>
+                    <th>Documento</th>
                     <th>Horario</th>
+                    <th>Acciones</th>
                   </tr>
                 </thead> 
-                <tbody className="listado-odontologos">
+                <tbody>
                 {odontologos.map((odontologo) => (
                     <Odontologo key={odontologo._id} odontologo={odontologo} />
                 ))}

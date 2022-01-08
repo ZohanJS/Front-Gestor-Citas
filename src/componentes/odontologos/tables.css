@@ -1,7 +1,6 @@
 .contenedorTable{
     position:relative;
     background:#3D82DB;
-    width:825px;
     height:337px;
     margin:auto;
     padding:10px;
@@ -37,6 +36,7 @@ table{
   width:100%;  
 }
 
+
 th,td{
   text-align: center;
   padding:11px;
@@ -61,3 +61,52 @@ tr:hover td{
     background:rgba(44,88,145,.6);
 }
 
+.btnIcon{
+  background:transparent;
+  padding:0;
+  font-size:20px;
+  margin-left:10px;
+  margin-right:10px;
+}
+
+#delete:hover{
+  background:transparent;
+  color:var(--rojo);
+}
+
+#edit:hover{
+  background:transparent;
+  color:var(--amarillo);
+}
+
+.btnAdd{
+  background:#3D82DB;
+  width:183px;
+  height:44px;
+  padding:auto;
+  border-radius: 16px; 
+  display:flex;
+  justify-content:space-around;
+  position:relative;
+  top:30%;
+  left:70%;
+}
+
+.add{
+  float:left;
+  color:white;
+  width:50%;
+  height:100%;
+  margin:1px;
+  padding:0;
+  font-size:18px;
+  text-align:center;
+}
+#addM{
+  position:relative;
+  top:-5px;
+}
+
+.btnAdd:hover{
+  background:#2C5891;
+}
