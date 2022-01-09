@@ -1,8 +1,16 @@
 /** Navegacion **/
+:root{
+    --azul: #3D82DB;
+}
+
+
 .sidebar {
     margin: 1.5rem;
     background-color: var(--azul);
     border-radius: 2rem;
+    width: 100%;
+    height: 95%;
+    
 }
 
 .navegacion a {
@@ -14,6 +22,7 @@
     position: relative;
     padding-left: 10rem;
     padding-top: 2rem;
+    text-align: left;
 }
 .navegacion a::before {
     display: inline-block;
@@ -41,4 +50,11 @@
     font-family: "Font Awesome 5 Free"; 
     font-weight: 900; 
     content: "\f073";
+}
+.grid {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: left;
+    background-color:rgba(237, 245, 255, 0.6) ;
 }

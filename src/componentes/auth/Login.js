@@ -89,7 +89,7 @@ function Login(props) {
             onChange={leerDatos}
             className="form-control us-cn"
           />
-          <a href="#">Restablecer contraseña</a>
+          <a className="restablecer_login" href="#">Restablecer contraseña</a>
           </div>
 
           {/* <input
@@ -98,8 +98,8 @@ function Login(props) {
             className="btn btn-verde btn-block"
           /> */}
           <div className='botones'>
-            <input type="submit" className="btn btn-primary" value="Entrar"></input>
-            <input type="button" className="btn btn-primary btn2" onClick={()=> alert("Te estás dirigiendo a la pantalla de registro")} value="Crear cuenta"></input>
+            <input type="submit" className="btn_login btn btn-primary" value="Entrar"></input>
+            <input type="button" className="btn_login btn btn-primary btn2" onClick={()=> alert("Te estás dirigiendo a la pantalla de registro")} value="Crear cuenta"></input>
          </div>
         </form>
       {/* </div> */}

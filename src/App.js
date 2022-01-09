@@ -31,7 +31,7 @@ function App() {
 
     return (
       <Router>
-          <Fragment>
+          <>
             <CRMProvider value={[ auth, guardarAuth ]}>
               {/* <Header /> */}
 
@@ -57,7 +57,7 @@ function App() {
                   </main>
               </div>
             </CRMProvider>
-          </Fragment>
+          </>
       </Router>
     )
 }

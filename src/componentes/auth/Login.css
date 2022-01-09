@@ -61,10 +61,10 @@
       transform: translateY(-180%);
 
   }
-  a{
+  .restablecer_login{
       color: var(--light);
       text-align: end;
-      font-size: 0.8em;
+      font-size: 1em;
   }
   .botones{
     transform: translateY(50%);
@@ -74,7 +74,7 @@
     margin: auto;
 
   }
-  .btn{
+  .btn_login{
     border-radius: 18px !important;
     margin-bottom: 40px;
     background-color: #3D82DB !important;
