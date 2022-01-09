@@ -4,7 +4,7 @@
     height:337px;
     margin:auto;
     padding:10px;
-    top:250px;   
+    top:50px;   
     border-radius: 20px;
     overflow:hidden;
         
@@ -88,7 +88,7 @@ tr:hover td{
   display:flex;
   justify-content:space-around;
   position:relative;
-  top:30%;
+  top:0%;
   left:70%;
 }
 

@@ -177,6 +177,9 @@ h2 {
     border-radius: 1rem;
 }
 
+.caja-contenido h2{
+    color: var(--azul);
+}
 /** Mostrar Odontologos **/
 .listado-odontologos,
 .listado-sedes,
