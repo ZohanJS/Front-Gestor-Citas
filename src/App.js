@@ -33,12 +33,12 @@ function App() {
       <Router>
           <Fragment>
             <CRMProvider value={[ auth, guardarAuth ]}>
-              <Header />
+              {/* <Header /> */}
 
               <div className="grid contenedor contenido-principal">
                   <Navegacion />
 
-                  <main className="caja-contenido col-9">
+                  <main /* className="caja-contenido col-9" */>
                         <Switch>
                             <Route exact path="/" component={Odontologos} />
                             <Route exact path="/odontologos/nuevo" component={NuevoOdontologo} />

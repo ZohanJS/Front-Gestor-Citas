@@ -1,106 +1,110 @@
-import React, {useState, useContext} from 'react';
-import Swal from 'sweetalert2';
-import { withRouter } from 'react-router-dom';
-import odontologoAxios from '../../config/axios';
+import React, { useState, useContext } from "react";
+import './Login.css';
+
+import Swal from "sweetalert2";
+import { withRouter } from "react-router-dom";
+import odontologoAxios from "../../config/axios";
+import './Login.css';
 
 // Context
-import { CRMContext } from '../../context/CRMContext';
+import { CRMContext } from "../../context/CRMContext";
 
-function Login(props){
+function Login(props) {
+  // Auth y token
+  const [auth, guardarAuth] = useContext(CRMContext);
 
-    // Auth y token
-    const [auth, guardarAuth] = useContext(CRMContext);
+  // State con los datos del formulario
+  const [credenciales, guardarCredenciales] = useState({});
 
+  // iniciar sesión en el servidor
+  const iniciarSesion = async (e) => {
+    e.preventDefault();
 
-    // State con los datos del formulario
-    const [ credenciales, guardarCredenciales] = useState({});
+    // autenticar al usuario
 
+    try {
+      const respuesta = await odontologoAxios.post(
+        "/api/auth/login",
+        credenciales
+      );
+      console.log(respuesta);
+      // extraer el token y colocarlo en localstorage
+      const { token } = respuesta.data;
+      localStorage.setItem("token", token);
 
-    // iniciar sesión en el servidor
-    const iniciarSesion = async e => {
-        e.preventDefault();
+      // colocarlo en el state
+      guardarAuth({
+        token,
+        auth: true,
+      });
 
-        // autenticar al usuario
+      // alerta
+      Swal.fire("Login Correcto", "Has iniciado Sesión", "success");
 
-        try {
-            const respuesta = await odontologoAxios.post('/api/auth/login', credenciales);
-            console.log(respuesta);
-            // extraer el token y colocarlo en localstorage
-            const { token } = respuesta.data;
-            localStorage.setItem('token', token);
-
-            // colocarlo en el state
-            guardarAuth({
-                token, 
-                auth: true
-            })
-
-            // alerta
-            Swal.fire(
-                'Login Correcto',
-                'Has iniciado Sesión',
-                'success'
-            )
-
-            // redireccionar
-            props.history.push('/');
-
-            
-        } catch (error) {
-            console.log(error);
-            Swal.fire({
-                type: 'error',
-                title: 'Hubo un error',
-                text: error.response.data.mensaje
-            })
-        }
+      // redireccionar
+      props.history.push("/");
+    } catch (error) {
+      console.log(error);
+      Swal.fire({
+        type: "error",
+        title: "Hubo un error",
+        text: error.response.data.mensaje,
+      });
     }
+  };
 
-    // almacenar lo que el usuario escribe en el state
-    const leerDatos = e => {
-        guardarCredenciales({
-            ...credenciales,
-            [e.target.name] : e.target.value
-        })
-    }
+  // almacenar lo que el usuario escribe en el state
+  const leerDatos = (e) => {
+    guardarCredenciales({
+      ...credenciales,
+      [e.target.name]: e.target.value,
+    });
+  };
 
-    return(
+  return (
+    <div className="containerPrincipal">
+      <h2 className="is">Iniciar Sesión</h2>
 
-        <div className="login">
-            <h2>Iniciar Sesión</h2>
+      {/* <div className="containerSecundario"> */}
+        <form onSubmit={iniciarSesion} 
+        className="form form-group">
+        <div className="containerSecundario">
+          <label>Usuario: </label>
+          <input
+            type="text"
+            name="email"
+            placeholder="Ingresa tu usuario"
+            required
+            onChange={leerDatos}
+            className="form-control us-cn"
+          />
 
-            <div className="contenedor-formulario">
-                <form
-                    onSubmit={iniciarSesion}
-                >
+          {/* <div className="campo"> */}
+          <label>Contraseña: </label>
+          <input
+            type="password"
+            name="password"
+            placeholder="***********"
+            required
+            onChange={leerDatos}
+            className="form-control us-cn"
+          />
+          <a href="#">Restablecer contraseña</a>
+          </div>
 
-                    <div className="campo">
-                        <label>Email</label>
-                        <input 
-                            type="text"
-                            name="email"
-                            placeholder="Email para Iniciar Sesión"
-                            required
-                            onChange={leerDatos}
-                        />
-                    </div>
-
-                    <div className="campo">
-                        <label>Password</label>
-                        <input 
-                            type="password"
-                            name="password"
-                            placeholder="Password para Iniciar Sesión"
-                            required
-                            onChange={leerDatos}
-                        />
-                    </div>
-
-                    <input type="submit" value="Iniciar Sesión" className="btn btn-verde btn-block" />
-                </form>
-            </div>
-        </div>
-    )
+          {/* <input
+            type="submit"
+            value="Iniciar Sesión"
+            className="btn btn-verde btn-block"
+          /> */}
+          <div className='botones'>
+            <input type="submit" className="btn btn-primary" value="Entrar"></input>
+            <input type="button" className="btn btn-primary btn2" onClick={()=> alert("Te estás dirigiendo a la pantalla de registro")} value="Crear cuenta"></input>
+         </div>
+        </form>
+      {/* </div> */}
+    </div>
+  );
 }
 
 export default withRouter(Login);
