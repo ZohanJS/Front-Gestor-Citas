@@ -71,7 +71,7 @@ function Odontologos(props) {
 
       <div className="contenedorTable">
         <div className="tableTitle">
-          <h2>Odontólogos</h2>
+          <h2 id="tableTitle">Odontólogos</h2>
         </div>
         <div className="tableModel">
           <div className="table-responsive">

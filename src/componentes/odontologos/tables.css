@@ -4,7 +4,7 @@
     height:337px;
     margin:auto;
     padding:10px;
-    top:250px;   
+    top:50px;   
     border-radius: 20px;
     overflow:hidden;
         
@@ -16,6 +16,13 @@
   top:0px;
 }
 h2{
+  font-size:2.5vw; 
+  margin-left:15px;
+  margin-bottom:15px;
+  margin-top:15px;
+}
+#tableTitle{
+  
   color:white;
   size:auto;
   font-size:2.5vw; 
@@ -23,6 +30,7 @@ h2{
   margin-bottom:15px;
   margin-top:15px;
   font-family: 'Ubuntu'; 
+
 }
 .tableModel{
   position:relative;
@@ -91,7 +99,7 @@ tr:hover td{
   display:flex;
   justify-content:space-around;
   position:relative;
-  top:30%;
+  top:0%;
   left:80%;
 }
 

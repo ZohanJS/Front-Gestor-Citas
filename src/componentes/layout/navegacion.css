@@ -1,8 +1,8 @@
 /** Navegacion **/
 .sidebar {
-    padding-top: 0.2rem;
+    margin: 1.5rem;
     background-color: var(--azul);
-
+    border-radius: 2rem;
 }
 
 .navegacion a {
@@ -30,15 +30,15 @@
 .navegacion a.odontologos::before {
     font-family: "Font Awesome 5 Free"; 
     font-weight: 900; 
-    content: "\f0c0";
+    content: "\f500";
 }
 .navegacion a.sedes::before {
     font-family: "Font Awesome 5 Free"; 
     font-weight: 900; 
-    content: "\f468";
+    content: "\f015";
 }
 .navegacion a.pedidos::before {
     font-family: "Font Awesome 5 Free"; 
     font-weight: 900; 
-    content: "\f02d";
+    content: "\f073";
 }
