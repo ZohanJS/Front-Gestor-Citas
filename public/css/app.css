@@ -89,7 +89,11 @@ h2 {
     background-color: var(--azul);
 }
 .btn-rojo {
-    background-color: var(--rojo);
+    background-color: var(--azul);
+    position: absolute;
+    bottom: 50px;
+    left: 125px;
+    font-size: 40px;
 }
 .btn-naranja {
     background-color: var(--naranja);
@@ -159,7 +163,7 @@ h2 {
 
 @media (max-width: 767px) {
     .caja-contenido{
-        margin-top: 5rem;
+        margin-top: 1rem;
     }
 }
 .caja-contenido {

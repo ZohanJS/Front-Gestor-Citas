@@ -39,8 +39,8 @@ const Navegacion = (props) => {
                             className="btn btn-rojo"
                             onClick={cerrarSesion}
                         >
-                            <i className="far fa-times-circle"></i>
-                            Cerrar Sesión
+                            <i class="fas fa-sign-out-alt"></i>
+                            
                         </button>
                     ) : null }
             </nav>
