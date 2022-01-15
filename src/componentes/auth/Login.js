@@ -4,7 +4,7 @@ import './Login.css';
 import Swal from "sweetalert2";
 import { withRouter } from "react-router-dom";
 import odontologoAxios from "../../config/axios";
-import './Login.css';
+import { Link } from "react-router-dom";
 
 // Context
 import { CRMContext } from "../../context/CRMContext";
@@ -89,9 +89,11 @@ function Login(props) {
             onChange={leerDatos}
             className="form-control us-cn"
           />
+          {/* <Link to={"/odontologos/nuevo"}> */}
           <a className="restablecer_login" href="#">Restablecer contraseña</a>
+          {/* </Link> */}
           </div>
-
+          
           {/* <input
             type="submit"
             value="Iniciar Sesión"

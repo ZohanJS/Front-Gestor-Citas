@@ -33,7 +33,7 @@ function Odontologos(props) {
               },
             }
           );
-          console.log(odontologosConsulta.data);
+          /*     */
           // colocar el resultado en el state
           guardarOdontologos(odontologosConsulta.data["odontologos"]);
         } catch (error) {
@@ -60,7 +60,7 @@ function Odontologos(props) {
   return (
 
     <Fragment>
-      <h2>Odontólogos</h2>
+      <h2 className="h2Tabla">Odontólogos</h2>
 
       <div className="btnAdd">
         <Link to={"/odontologos/nuevo"}>

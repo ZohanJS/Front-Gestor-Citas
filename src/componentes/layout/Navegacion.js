@@ -39,7 +39,7 @@ const Navegacion = (props) => {
                             className="btn btn-rojo"
                             onClick={cerrarSesion}
                         >
-                            <i class="fas fa-sign-out-alt"></i>
+                            <i className="fas fa-sign-out-alt"></i>
                             
                         </button>
                     ) : null }

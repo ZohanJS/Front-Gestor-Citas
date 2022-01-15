@@ -16,14 +16,14 @@ function DetallesPedido({pedido}) {
                         {pedido.pedido.map(articulos => (
                             <li key={pedido._id+articulos.producto._id}>
                                 <p>{articulos.producto.nombre} </p>
-                                <p>Precio: ${articulos.producto.precio} </p>
+                                <p>Precio: "$"{articulos.producto.precio} </p>
                                 <p>Cantidad: {articulos.cantidad}</p>
                             </li>
                         ))}
                     </ul>
                 </div>
 
-                <p className="total">Total: ${pedido.total} </p>
+                <p className="total">Total: "$"{pedido.total} </p>
 
             </div>
             <div className="acciones">
