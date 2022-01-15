@@ -1,20 +1,18 @@
 import React, { useState } from 'react';
-
 const CRMContext = React.createContext([ {}, () => {} ]);
 
 const CRMProvider = props => {
-
-    // definir el state inicial
+    const token = localStorage.getItem('token') || ''
     const [auth, guardarAuth ] = useState({
-        token: '',
-        auth: false
+        token: token,
+        auth: !!token
     });
 
     return (
         <CRMContext.Provider value={[auth, guardarAuth]}>
             {props.children}
-        </CRMContext.Provider> 
+        </CRMContext.Provider>
     );
 }
 
-export { CRMContext, CRMProvider };
+export { CRMContext, CRMProvider};
