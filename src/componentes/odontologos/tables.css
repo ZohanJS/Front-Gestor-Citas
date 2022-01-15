@@ -4,10 +4,10 @@
     height:337px;
     margin:auto;
     padding:10px;
-    top:50px;   
+    top:50px;
     border-radius: 20px;
     overflow:hidden;
-        
+
 }
 .tableTitle{
   width:100%;
@@ -16,34 +16,34 @@
   top:0px;
 }
 h2{
-  font-size:2.5vw; 
+  font-size:2.5vw;
   margin-left:15px;
   margin-bottom:15px;
   margin-top:15px;
 }
 #tableTitle{
-  
+
   color:white;
   size:auto;
-  font-size:2.5vw; 
+  font-size:2.5vw;
   margin-left:15px;
   margin-bottom:15px;
   margin-top:15px;
-  font-family: 'Ubuntu'; 
+  font-family: 'Ubuntu';
 
 }
 .tableModel{
   position:relative;
-  width:100%;  
+  width:100%;
   height:70%;
   overflow:auto;
 }
 
 table{
-  width:100%;  
+  width:100%;
 }
 th{
-  position:flex;  
+  position:flex;
   top:0;
 }
 
@@ -52,7 +52,7 @@ th,td{
   text-align: center;
   padding:11px;
   color:white;
-  
+
 }
 td{
   border-bottom: .3px solid #2C5891 ;
@@ -95,7 +95,7 @@ tr:hover td{
   width:183px;
   height:44px;
   padding:auto;
-  border-radius: 16px; 
+  border-radius: 16px;
   display:flex;
   justify-content:space-around;
   position:relative;
@@ -120,4 +120,18 @@ tr:hover td{
 
 .btnAdd:hover{
   background:#2C5891;
+}
+
+.editar-odontolog {
+  position: fixed;
+  top: 20%;
+  left: 20%;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 6px;
+  color: #000;
+}
+
+.editar-odontolog h1 {
+  color: #000;
 }
