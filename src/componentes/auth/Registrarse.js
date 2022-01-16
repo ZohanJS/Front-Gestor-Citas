@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter} from "react-router-dom";
 import "./Registrarse.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTooth } from "@fortawesome/free-solid-svg-icons";

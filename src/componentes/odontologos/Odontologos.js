@@ -3,7 +3,6 @@ import Odontologo from "./Odontologo";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import NuevoOdontologo from "./NuevoOdontologo";
 import { useOdontologosController } from "./hooks/UseOdontologosController";
 import Spinner from "../layout/Spinner";
 
@@ -16,8 +15,6 @@ function Odontologos() {
 
   return (
     <Fragment>
-      
-      {/*    <NuevoOdontologo /> */}
       <div className="btnAdd">
         <Link to={"/odontologos/nuevo"}>
           <FontAwesomeIcon icon={faPlus} className="add"></FontAwesomeIcon>
