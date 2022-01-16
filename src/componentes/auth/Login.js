@@ -1,6 +1,10 @@
 import React, { useState, useContext } from "react";
 import './Login.css';
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTooth} from "@fortawesome/free-solid-svg-icons";
+
+
 import Swal from "sweetalert2";
 import { withRouter } from "react-router-dom";
 import odontologoAxios from "../../config/axios";
@@ -48,6 +52,9 @@ function Login(props) {
 
   return (
     <div className="containerPrincipal">
+      <div className="logoBox">
+        <FontAwesomeIcon icon={ faTooth} className="logoLogin"></FontAwesomeIcon>
+      </div>
       <h2 className="is">Iniciar Sesión</h2>
         <form onSubmit={iniciarSesion}
         className="form form-group">
@@ -75,9 +82,9 @@ function Login(props) {
           <a className="restablecer_login" href="#">Restablecer contraseña</a>
           {/* </Link> */}
           </div>
-          <div className='botones'>
+          <div className='botonesLogin'>
             <input type="submit" className="btn_login btn btn-primary" value="Entrar"></input>
-            <input type="button" className="btn_login btn btn-primary btn2" onClick={()=> alert("Te estás dirigiendo a la pantalla de registro")} value="Crear cuenta"></input>
+            <input type="button" className="btn_login btn btn-primary btn2" onClick={()=> props.history.push("/registro")} value="Crear cuenta"></input>
          </div>
         </form>
     </div>

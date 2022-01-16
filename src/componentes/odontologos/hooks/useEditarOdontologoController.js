@@ -1,5 +1,5 @@
 import {useContext, useState} from "react";
-import {useHistory} from 'react-router-dom'
+import {useHistory} from 'react-router-dom';
 import Swal from 'sweetalert2';
 import odontologoAxios from '../../../config/axios';
 import {CRMContext} from '../../../context/CRMContext';

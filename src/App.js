@@ -9,6 +9,7 @@ import NuevaSede from './componentes/sedes/NuevaSede';
 import Pedidos from './componentes/pedidos/Pedidos';
 import NuevoPedido from './componentes/pedidos/NuevoPedido';
 import Login from './componentes/auth/Login';
+import Registrarse from './componentes/auth/Registrarse';
 import { CRMProvider } from './context/CRMContext';
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
                 <Route exact path="/sedes/editar/:id" component={EditarSede} />
                 <Route exact path="/pedidos" component={Pedidos} />
                 <Route exact path="/pedidos/nuevo/:id" component={NuevoPedido} />
+                <Route exact path="/registro" component={Registrarse} />
                 <Route exact path="/iniciar-sesion" component={Login} />
               </Switch>
             </main>
