@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navegacion from './componentes/layout/Navegacion';
 import Odontologos from './componentes/odontologos/Odontologos';
 import EditarOdontologo from './componentes/odontologos/EditarOdontologo';
+import NuevoOdontologo from './componentes/odontologos/NuevoOdontologo';
 import Sedes from './componentes/sedes/Sedes';
 import EditarSede from './componentes/sedes/EditarSede';
 import NuevaSede from './componentes/sedes/NuevaSede';
@@ -21,7 +22,8 @@ function App() {
             <main>
               <Switch>
                 <Route exact path="/" component={Odontologos} />
-                <Route exact path="/odontologos/editar/:id" component={EditarOdontologo} />
+                <Route exact path="/odontologos/editar" component={EditarOdontologo} />
+                <Route exact path="/odontologos/nuevo" component={NuevoOdontologo} />
                 <Route exact path="/sedes" component={Sedes} />
                 <Route exact path="/sedes/nuevo" component={NuevaSede} />
                 <Route exact path="/sedes/editar/:id" component={EditarSede} />

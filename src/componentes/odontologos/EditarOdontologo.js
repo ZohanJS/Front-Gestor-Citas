@@ -1,10 +1,11 @@
 import React from 'react';
 import { useEditarOdontologoController } from './hooks/useEditarOdontologoController'
 import { OdontologoForm } from './OdontologoForm'
-
-function EditarOdontologo({ currentOdontologo }){
-    const { editarOdontologo, handleChange, validarOdontologo, odontologo } = useEditarOdontologoController(currentOdontologo)
-
+import { useLocation } from 'react-router-dom' 
+function EditarOdontologo({}){
+    const { state }  = useLocation()
+    const { editarOdontologo, handleChange, validarOdontologo, odontologo } = useEditarOdontologoController(state.odontologo)
+    
     return (
       <div className="editar-odontolog">
         <h1>Editar </h1>

@@ -6,10 +6,12 @@ import {Button} from 'reactstrap';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faPen, faTrashAlt} from '@fortawesome/free-solid-svg-icons';
 import EditarOdontologo from "./EditarOdontologo";
+import { useHistory } from "react-router-dom";
 
 function Odontologo({ odontologo }) {
   const [showOdontologo, setShowOdontologo] = useState(false)
   const { nombre, apellidos, email, telefono, _id } = odontologo;
+  const { push } = useHistory()
 
   const eliminarOdontologo = () => {
     Swal.fire({
@@ -46,9 +48,7 @@ function Odontologo({ odontologo }) {
       <td>0</td>
       <td>
         <div>
-          <Button onClick={eliminarOdontologo} className="btnIcon" id="delete"><FontAwesomeIcon icon={faTrashAlt}></FontAwesomeIcon></Button>
-          <Button onClick={() => setShowOdontologo(!showOdontologo)} className="btnIcon" id="edit"><FontAwesomeIcon icon={faPen}></FontAwesomeIcon></Button>
-          { showOdontologo && <EditarOdontologo currentOdontologo={odontologo} />}
+          <Button onClick={() => push('/odontologos/editar', { odontologo })} className="btnIcon" id="edit"><FontAwesomeIcon icon={faPen}></FontAwesomeIcon></Button>
         </div>
       </td>
     </tr>
