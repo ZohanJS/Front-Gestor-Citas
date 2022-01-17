@@ -18,9 +18,9 @@
     font-family: var(--fontTexto);
     color: white;
     margin-bottom: 2rem;
-    font-size: 2rem;
+    font-size: 1.7em;
     position: relative;
-    padding-left: 10rem;
+    padding-left: 7rem;
     padding-top: 2rem;
     text-align: left;
 }
@@ -57,4 +57,13 @@
     height: 100vh;
     justify-content: left;
     background-color:rgba(237, 245, 255, 0.6    ) ;
+}
+
+.boton-salir{
+    background: none;
+    position: absolute;
+    bottom: 10px;
+    left: 150px;
+    color: white;
+    font-size: 2.5em;
 }

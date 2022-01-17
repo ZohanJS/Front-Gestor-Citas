@@ -36,10 +36,10 @@ const Navegacion = (props) => {
                 { auth.auth ? (
                         <button 
                             type="button"
-                            className="btn btn-rojo"
+                            className="btn btn-rojo boton-salir"
                             onClick={cerrarSesion}
                         >
-                            <i class="fas fa-sign-out-alt"></i>
+                            <i className="fas fa-sign-out-alt"></i>
                             
                         </button>
                     ) : null }
