@@ -6,8 +6,8 @@ function NuevoOdontologo(){
   const { agregarOdontologo, handleChange, validarOdontologo, odontologo } = useNuevoOdontologoController()
 
   return (
-    <div>
-      <h1>Agregar </h1>
+    <div >
+      <h1>Nuevo Odondologo </h1>
       <OdontologoForm
         handleSubmit={agregarOdontologo}
         handleChange={handleChange}

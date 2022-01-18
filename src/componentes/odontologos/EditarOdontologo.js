@@ -7,8 +7,8 @@ function EditarOdontologo({}){
     const { editarOdontologo, handleChange, validarOdontologo, odontologo } = useEditarOdontologoController(state.odontologo)
     
     return (
-      <div className="editar-odontolog">
-        <h1>Editar </h1>
+      <div className="">
+        <h1>Editar Odondologo </h1>
         <OdontologoForm
           handleSubmit={editarOdontologo}
           handleChange={handleChange}
