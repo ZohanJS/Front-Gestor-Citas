@@ -48,6 +48,7 @@ function Odontologo({ odontologo }) {
       <td>0</td>
       <td>
         <div>
+          <Button onClick={eliminarOdontologo} className="btnIcon" id="delete"><FontAwesomeIcon icon={faTrashAlt}></FontAwesomeIcon></Button>
           <Button onClick={() => push('/odontologos/editar', { odontologo })} className="btnIcon" id="edit"><FontAwesomeIcon icon={faPen}></FontAwesomeIcon></Button>
         </div>
       </td>

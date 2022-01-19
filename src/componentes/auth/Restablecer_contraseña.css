@@ -61,21 +61,17 @@
   font-size: 1.7vw;
 }
 
-#titlehide{
+#titlehide1{
     display:none;
 }
 
-.inputrestablecer {
+.modalRestablecer {
   width: 80%;
   display:flex;
   flex-flow: column wrap;
 }
 
-.reenviarCodigo {
-  text-align: end;
-  margin-bottom:1px;
-  display:none;
-}
+
 
 .botonesRestablecer {
   display: flex;
