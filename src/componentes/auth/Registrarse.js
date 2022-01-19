@@ -15,10 +15,12 @@ function Registrarse(props) {
     e.preventDefault();
 
     try {
-      odontologoAxios.post(
+      await odontologoAxios.post(
         "/api/auth/create",
         credenciales
       );
+
+      /* console.log(palbackend); */
 
       Swal.fire(
         "Registro Correcto",
@@ -28,9 +30,9 @@ function Registrarse(props) {
       props.history.push("/iniciar-sesion");
     } catch (error) {
       Swal.fire({
-        type: "Error",
+        type: "error",
         title: "No se pudo registrar con éxito tu info :(",
-        text: error.response.data.mensaje,
+        text: error.response.data.msg,
       });
     }
   };
@@ -78,7 +80,7 @@ function Registrarse(props) {
                 required
                 onChange={leerDatos}
                 className="form-control us-cn"
-                autocomplete="off"
+                autoComplete="off"
               />
             </div>
 
@@ -90,7 +92,7 @@ function Registrarse(props) {
                 required
                 onChange={leerDatos}
                 className="form-control us-cn"
-                autocomplete="off"
+                autoComplete="off"
               />
             </div>
 
@@ -102,9 +104,9 @@ function Registrarse(props) {
                 required
                 /* onChange={} 
                 className="form-control us-cn"
-                autocomplete="off"
+                autoComplete="off"
               /> */}
-              <select id="inputState" class="form-control us-cn selectRegistro">
+              <select id="inputState" className="form-control us-cn selectRegistro">
                 <option selected>Elige...</option>
                 <option>Cédula de ciudadania</option>
                 <option>Cédula de extranjería</option>
@@ -120,7 +122,7 @@ function Registrarse(props) {
                 required
                 onChange={leerDatos}
                 className="form-control us-cn"
-                autocomplete="off"
+                autoComplete="off"
               />
             </div>
 
@@ -132,13 +134,13 @@ function Registrarse(props) {
                 required
                 onChange={leerDatos}
                 className="form-control us-cn"
-                autocomplete="off"
+                autoComplete="off"
               />
             </div>
 
             <div>
               <label>Especialización: </label>
-              <select class="form-control us-cn selectRegistro">
+              <select className="form-control us-cn selectRegistro">
                 <option selected>Elige...</option>
                 <option>Sistemas</option>
                 <option>Odontología</option>
@@ -154,7 +156,7 @@ function Registrarse(props) {
                 required
                 
                 className="form-control us-cn"
-                autocomplete="new-password"
+                autoComplete="new-password"
               />
             </div>
 
@@ -166,7 +168,7 @@ function Registrarse(props) {
                 required
                 onChange={leerDatos}
                 className="form-control us-cn"
-                autocomplete="nope"
+                autoComplete="nope"
               />
             </div>
           </div>
