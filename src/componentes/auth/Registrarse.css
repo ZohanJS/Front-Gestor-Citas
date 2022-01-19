@@ -60,6 +60,26 @@
 
   justify-content: center;
 }
+.tratamientodedatos{
+  position: absolute;
+  display: flex;
+  align-content: center;
+  bottom: 30%;
+  margin: auto;
+  font-size: 12px;
+  line-height: 1.2em;
+}
+.tratamientodedatos input{ 
+  margin: auto;
+}
+
+.tratamientodedatos label{
+  padding-left: 10px;
+}
+
+.selectRegistro{
+  height: auto!important;
+}
 
 .btn_registro {
   border-radius: 18px !important;
