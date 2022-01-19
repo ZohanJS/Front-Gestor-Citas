@@ -54,7 +54,7 @@ function Registrarse(props) {
                 type="text"
                 name="nombre"
                 required
-                /* onChange={} */
+                onChange={leerDatos}
                 className="form-control us-cn"
               />
             </div>
@@ -63,9 +63,9 @@ function Registrarse(props) {
               <label>Apellidos: </label>
               <input
                 type="text"
-                name="apellido"
+                name="apellidos"
                 required
-                /* onChange={} */
+                onChange={leerDatos}
                 className="form-control us-cn"
               />
             </div>
@@ -76,7 +76,7 @@ function Registrarse(props) {
                 type="email"
                 name="email"
                 required
-                /* onChange={} */
+                onChange={leerDatos}
                 className="form-control us-cn"
                 autocomplete="off"
               />
@@ -88,7 +88,7 @@ function Registrarse(props) {
                 type="number"
                 name="telefono"
                 required
-                /* onChange={} */
+                onChange={leerDatos}
                 className="form-control us-cn"
                 autocomplete="off"
               />
@@ -116,9 +116,9 @@ function Registrarse(props) {
               <label>Número de identificación: </label>
               <input
                 type="text"
-                name="numero_id"
+                name="documento"
                 required
-                /* onChange={} */
+                onChange={leerDatos}
                 className="form-control us-cn"
                 autocomplete="off"
               />
@@ -128,9 +128,9 @@ function Registrarse(props) {
               <label>Fecha de nacimiento: </label>
               <input
                 type="date"
-                name="fecha"
+                name="fechaNacimiento"
                 required
-                /* onChange={} */
+                onChange={leerDatos}
                 className="form-control us-cn"
                 autocomplete="off"
               />
@@ -150,9 +150,9 @@ function Registrarse(props) {
               <label>Contraseña: </label>
               <input
                 type="password"
-                name="contra"
+                name="contraseña"
                 required
-                /* onChange={} */
+                
                 className="form-control us-cn"
                 autocomplete="new-password"
               />
@@ -162,9 +162,9 @@ function Registrarse(props) {
               <label>Repite la contraseña: </label>
               <input
                 type="password"
-                name="repite_contra"
+                name="password"
                 required
-                /* onChange={} */
+                onChange={leerDatos}
                 className="form-control us-cn"
                 autocomplete="nope"
               />
@@ -188,7 +188,6 @@ function Registrarse(props) {
               type="submit"
               className="btn_registro btn btn-primary"
               value="Continuar"
-              onClick={leerDatos}
             ></input>
             <input
               type="button"
