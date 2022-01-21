@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
 import "./Registrarse.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -15,12 +15,10 @@ function Registrarse(props) {
     e.preventDefault();
 
     try {
-      await odontologoAxios.post(
+      odontologoAxios.post(
         "/api/auth/create",
         credenciales
       );
-
-      /* console.log(palbackend); */
 
       Swal.fire(
         "Registro Correcto",
@@ -30,9 +28,9 @@ function Registrarse(props) {
       props.history.push("/iniciar-sesion");
     } catch (error) {
       Swal.fire({
-        type: "error",
+        type: "Error",
         title: "No se pudo registrar con éxito tu info :(",
-        text: error.response.data.msg,
+        text: error.response.data.mensaje,
       });
     }
   };
@@ -104,7 +102,7 @@ function Registrarse(props) {
                 required
                 /* onChange={} 
                 className="form-control us-cn"
-                autoComplete="off"
+                autocomplete="off"
               /> */}
               <select id="inputState" className="form-control us-cn selectRegistro">
                 <option selected>Elige...</option>

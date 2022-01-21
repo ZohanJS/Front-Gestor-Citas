@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Modal from "./Modal";
 import styled from "styled-components";
 
@@ -22,15 +22,14 @@ function Restablecer_contraseña(props) {
   const registrarse = async (e) => {
     e.preventDefault();
     try {
-      odontologoAxios.post("/api/password-reset", {"email":texto});
+      odontologoAxios.post("/api/auth/create", credenciales);
 
       Swal.fire(
         "Registro Correcto",
         "Serás redirijido(a) al inicio de sesión.",
         "success"
       );
-      cambiarEstadoModal1(false);
-      cambiarEstadoModal2(true);
+      props.history.push("/iniciar-sesion");
     } catch (error) {
       Swal.fire({
         type: "Error",
@@ -38,7 +37,8 @@ function Restablecer_contraseña(props) {
         text: error.response.data.mensaje,
       });
     }
-    
+    cambiarEstadoModal1(false);
+    cambiarEstadoModal2(true);
   };
 
   return (
@@ -67,13 +67,12 @@ function Restablecer_contraseña(props) {
                   >
                     Cancelar
                   </BtnRestablecer>
-                  <BtnRestablecer
+                  <input
                     type="submit"
                     className="BtnRestablecer btn btn-primary"
                     id="btnrest2"
                     value="Aceptar"
-                  > Aceptar
-                    </BtnRestablecer>
+                  />
                 </BotonesRestablecer>
               </Modal>
               <Modal

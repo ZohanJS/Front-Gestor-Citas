@@ -1,11 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 
+
+
 const Modal = ({
   children,
   estado,
   titulo,
   mostrarInput,
+  cambiarValor,
   mostrarEnlace,
 }) => {
   return (
@@ -21,21 +24,21 @@ const Modal = ({
                 <input
                   type="email"
                   name="email"
-                  required
+                  required                 
                   className="form-control"
                   placeholder="name@example.com"
-                />
+                  onChange={cambiarValor}/>  
               )}
             </InputModal>
             <ReenviarCorreo>
               {mostrarEnlace && (
-                <a
-                  
-                  href="#"
-                  value="Reenviar código nuevo"
-                >
-                  Reenviar correo
-                </a>
+                <BtnRestablecer
+                type="submit"
+                className="btn btn-primary"
+                id="btnrest2"
+              >
+                Reenviar correo
+              </BtnRestablecer>
               )}
             </ReenviarCorreo>
             {children}
@@ -66,6 +69,15 @@ const InputModal = styled.div`
 `;
 
 const ReenviarCorreo = styled.div`
-  text-align: center;
+  display: flex;
   margin-bottom: 10px;
+  justify-content: center;
+  text-align: center;  
+  justify-items: center;
+  align-items: center;
+  width: 100%;
+  `;
+const BtnRestablecer = styled.button`
+  margin-top: 3%;
+  width: 40%;
 `;
