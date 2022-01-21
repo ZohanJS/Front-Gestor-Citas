@@ -19,14 +19,14 @@ function Restablecer_contraseña(props) {
     setTexto(target.value);
   };
 
-  const registrarse = async (e) => {
+  const restablecer = async (e) => {
     e.preventDefault();
     try {
       odontologoAxios.post("/api/password-reset", {"email":texto});
 
       Swal.fire(
-        "Registro Correcto",
-        "Serás redirijido(a) al inicio de sesión.",
+        "Correo enviado",
+        "",
         "success"
       );
       cambiarEstadoModal1(false);
@@ -46,7 +46,7 @@ function Restablecer_contraseña(props) {
       <div className="containerRestablecer">
         <div className="containerRestablecer2">
           <h2 className="restablecerTitle">Restablecer Contraseña</h2>
-          <form className="containerRestablecer3" onSubmit={registrarse}>
+          <form className="containerRestablecer3" onSubmit={restablecer}>
             <div className="modalRestablecer">
               <FontAwesomeIcon
                 icon={faTooth}
@@ -57,7 +57,6 @@ function Restablecer_contraseña(props) {
                 titulo="Ingresa tu correo electrónico para restablecer tu contraseña"
                 mostrarInput={true}
                 cambiarValor={handleInputChange}
-                mostrarEnlace={false}
               >
                 <BotonesRestablecer>
                   <BtnRestablecer
@@ -80,8 +79,16 @@ function Restablecer_contraseña(props) {
                 estado={estadoModal2}
                 titulo="Enviamos un link a tu correo para restablecer la contraseña"
                 mostrarInput={false}
-                mostrarEnlace={true}
-              ></Modal>
+              >
+                <BotonesRestablecer1>
+                 <BtnRestablecer
+                    type="submit"
+                    className="BtnRestablecer btn btn-primary"
+                    id="btnrest2" 
+                  > Reenviar código
+                    </BtnRestablecer>
+                    </BotonesRestablecer1>
+              </Modal>
             </div>
           </form>
         </div>
@@ -102,4 +109,12 @@ const BotonesRestablecer = styled.div`
 const BtnRestablecer = styled.button`
   margin-top: 3%;
   width: 40%;
+`;
+
+const BotonesRestablecer1=styled.div`
+display: flex;
+justify-items: center;
+align-items: center;
+justify-content: center;
+width: 100%;
 `;

@@ -11,6 +11,7 @@ import Pedidos from './componentes/pedidos/Pedidos';
 import NuevoPedido from './componentes/pedidos/NuevoPedido';
 import Login from './componentes/auth/Login';
 import Restablecer_contraseña from './componentes/auth/Restablecer_contraseña';
+import Restablecer_contraseña1 from './componentes/auth/Restablecer_contraseña1';
 import Registrarse from './componentes/auth/Registrarse';
 import { CRMProvider } from './context/CRMContext';
 
@@ -32,6 +33,7 @@ function App() {
                 <Route exact path="/pedidos" component={Pedidos} />
                 <Route exact path="/pedidos/nuevo/:id" component={NuevoPedido} />
                 <Route exact path="/restablecer_contraseña" component={Restablecer_contraseña} />
+                <Route exact path="/api/password-reset/:id/:token" component={Restablecer_contraseña1} />
                 <Route exact path="/registro" component={Registrarse} />
                 <Route exact path="/iniciar-sesion" component={Login} />
                 /restabler-contraseña

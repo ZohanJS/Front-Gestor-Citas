@@ -1,5 +1,4 @@
-import React, { useState, useContext } from "react";
-import Modal from "./Modal";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 import "./Restablecer_contraseña.css";
@@ -9,8 +8,8 @@ import { faTooth } from "@fortawesome/free-solid-svg-icons";
 import odontologoAxios from "../../config/axios";
 import Swal from "sweetalert2";
 
-function Restablecer_contraseña(props) {
-  const [estadoModal1, cambiarEstadoModal1] = useState(true);
+function Restablecer_contraseña1(props) {
+  /*  const [estadoModal1, cambiarEstadoModal1] = useState(true);
   const [estadoModal2, cambiarEstadoModal2] = useState(false);
 
   const [texto, setTexto] = useState("");
@@ -19,17 +18,18 @@ function Restablecer_contraseña(props) {
     setTexto(target.value);
   };
 
-  const registrarse = async (e) => {
+  const restablecer = async (e) => {
     e.preventDefault();
     try {
-      odontologoAxios.post("/api/auth/create", credenciales);
+      odontologoAxios.post("/api/password-reset", {"email":texto});
 
       Swal.fire(
-        "Registro Correcto",
-        "Serás redirijido(a) al inicio de sesión.",
+        "Correo enviado",
+        "",
         "success"
       );
-      props.history.push("/iniciar-sesion");
+      cambiarEstadoModal1(false);
+      cambiarEstadoModal2(true);
     } catch (error) {
       Swal.fire({
         type: "Error",
@@ -37,28 +37,43 @@ function Restablecer_contraseña(props) {
         text: error.response.data.mensaje,
       });
     }
-    cambiarEstadoModal1(false);
-    cambiarEstadoModal2(true);
+    
   };
-
+ */
   return (
     <div>
       <div className="containerRestablecer">
         <div className="containerRestablecer2">
           <h2 className="restablecerTitle">Restablecer Contraseña</h2>
-          <form className="containerRestablecer3" onSubmit={registrarse}>
+          <form className="containerRestablecer3" /* onSubmit={restablecer} */>
             <div className="modalRestablecer">
               <FontAwesomeIcon
                 icon={faTooth}
-                className="logoRestablecer"
+                className="logoRestablecer1"
               ></FontAwesomeIcon>
-              <Modal
-                estado={estadoModal1}
-                titulo="Ingresa tu correo electrónico para restablecer tu contraseña"
-                mostrarInput={true}
-                cambiarValor={handleInputChange}
-                mostrarEnlace={false}
-              >
+              <ContenedorRestablecer>
+                <ContenedorModal>
+                  <div>
+                    <TituloModal>Digita tu nueva contraseña</TituloModal>
+                    <input
+                      type="password"
+                      name="password"
+                      required
+                      className="form-control"
+                      placeholder="contraseña"
+                    />
+                  </div>
+                  <div>
+                    <TituloModal>Digita nuevamente tu contraseña</TituloModal>
+                    <input
+                      type="password"
+                      name="password"
+                      required
+                      className="form-control"
+                      placeholder="contraseña"
+                    />
+                  </div>
+                </ContenedorModal>
                 <BotonesRestablecer>
                   <BtnRestablecer
                     className="btn btn-primary"
@@ -67,20 +82,15 @@ function Restablecer_contraseña(props) {
                   >
                     Cancelar
                   </BtnRestablecer>
-                  <input
+                  <BtnRestablecer
                     type="submit"
-                    className="BtnRestablecer btn btn-primary"
+                    className="btn btn-primary"
                     id="btnrest2"
-                    value="Aceptar"
-                  />
+                  >
+                    Aceptar
+                  </BtnRestablecer>
                 </BotonesRestablecer>
-              </Modal>
-              <Modal
-                estado={estadoModal2}
-                titulo="Enviamos un link a tu correo para restablecer la contraseña"
-                mostrarInput={false}
-                mostrarEnlace={true}
-              ></Modal>
+              </ContenedorRestablecer>
             </div>
           </form>
         </div>
@@ -88,17 +98,45 @@ function Restablecer_contraseña(props) {
     </div>
   );
 }
-export default Restablecer_contraseña;
+export default Restablecer_contraseña1;
+
+const ContenedorRestablecer = styled.div`
+  display: grid;
+  flex-flow: row wrap;
+  justify-content: CENTER;
+  width: 100%;
+  height: 80%;
+  grid-template-columns: repeat(2, 1fr);
+`;
+const ContenedorModal = styled.div`
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  width: 120%;
+`;
 
 const BotonesRestablecer = styled.div`
+  position: relative;
   display: flex;
-  justify-items: center;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: flex-end;
+  width: auto;
+  margin-top: 65px;
 `;
 
 const BtnRestablecer = styled.button`
-  margin-top: 3%;
-  width: 40%;
+  border-radius: 10px !important;
+  margin-bottom: 30px;
+  border: 0 !important;
+  text-align: center !important;
+  padding: 10px 40px;
+  width: 60%;
+`;
+
+const TituloModal = styled.h3`
+  margin-bottom: 6px;
+  margin-top: 30px;
+  text-align: left;
+  font-size: 1.3vw;
+  color: var(--text);
 `;

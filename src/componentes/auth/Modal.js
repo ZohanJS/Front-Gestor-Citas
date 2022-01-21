@@ -8,8 +8,7 @@ const Modal = ({
   estado,
   titulo,
   mostrarInput,
-  cambiarValor,
-  mostrarEnlace,
+  cambiarValor
 }) => {
   return (
     <>
@@ -30,7 +29,7 @@ const Modal = ({
                   onChange={cambiarValor}/>  
               )}
             </InputModal>
-            <ReenviarCorreo>
+           {/*  <ReenviarCorreo>
               {mostrarEnlace && (
                 <BtnRestablecer
                 type="submit"
@@ -40,7 +39,7 @@ const Modal = ({
                 Reenviar correo
               </BtnRestablecer>
               )}
-            </ReenviarCorreo>
+            </ReenviarCorreo> */}
             {children}
           </ModalRestablecer>
 
