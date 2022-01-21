@@ -2,11 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import odontologoAxios from '../../config/axios';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faPen, faTrashAlt} from '@fortawesome/free-solid-svg-icons';
+import {Button} from 'reactstrap';
+import { useHistory } from "react-router-dom";
 
 function Sede({sede}) {
+    const { push } = useHistory()
 
-
-    // elimina una sede
     const eliminarSede = id => {
         Swal.fire({
             title: '¿Estás seguro?',
@@ -37,30 +40,19 @@ function Sede({sede}) {
     const {_id, nombre, direccion, telefono, horario, estado } = sede;
 
     return (
-        <li className="sede">
-            <div className="info-sede">
-                <p className="nombre">{nombre}</p>
-                <p className="direccion">{direccion}</p>
-                <p className="telefono">{telefono}</p>
-                <p className="horario">{horario}</p>
-                <p className="estado">{estado}</p>
-            </div>
-            <div className="acciones">
-                <Link to={`/sedes/editar/${_id}`} className="btn btn-azul">
-                    <i className="fas fa-pen-alt"></i>
-                    Editar Sede
-                </Link>
-
-                <button 
-                    type="button" 
-                    className="btn btn-rojo btn-eliminar"
-                    onClick={() => eliminarSede(_id) }
-                >
-                    <i className="fas fa-times"></i>
-                    Eliminar Odontologo
-                </button>
-            </div>
-        </li>
+        <tr className="sede">
+                <td className="nombre">{nombre}</td>
+                <td className="direccion">{direccion}</td>
+                <td className="telefono">{telefono}</td>
+                <td className="horario">{horario}</td>
+                <td className="estado">{(estado)?"Activa":"Inactiva"}</td>
+                <td>
+                    <div>
+                        <Button onClick={eliminarSede} className="btnIcon" id="delete"><FontAwesomeIcon icon={faTrashAlt}></FontAwesomeIcon></Button>
+                        <Button onClick={() => push('/sedes/editar', { sede })} className="btnIcon" id="edit"><FontAwesomeIcon icon={faPen}></FontAwesomeIcon></Button>
+                    </div>
+                </td>
+        </tr>
     )
 }
 export default Sede;

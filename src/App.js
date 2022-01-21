@@ -28,7 +28,7 @@ function App() {
                 <Route exact path="/odontologos/nuevo" component={NuevoOdontologo} />
                 <Route exact path="/sedes" component={Sedes} />
                 <Route exact path="/sedes/nuevo" component={NuevaSede} />
-                <Route exact path="/sedes/editar/:id" component={EditarSede} />
+                <Route exact path="/sedes/editar/" component={EditarSede} />
                 <Route exact path="/pedidos" component={Pedidos} />
                 <Route exact path="/pedidos/nuevo/:id" component={NuevoPedido} />
                 <Route exact path="/restablecer_contraseña" component={Restablecer_contraseña} />

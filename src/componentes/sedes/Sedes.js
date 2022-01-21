@@ -1,77 +1,56 @@
-import React, {useEffect, useState, useContext,  Fragment} from 'react';
-import { Link } from 'react-router-dom';
-// importar cliente axios
-import odontologoAxios from '../../config/axios';
-import Sede from './Sede';
-import Spinner from '../layout/Spinner';
+import React, { Fragment } from "react";
+import Sede from "./Sede";
+import NuevaSede from "./NuevaSede";
+import { Link } from "react-router-dom";
+import { useSedesController } from './hooksSedes/useSedesController'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import Spinner from "../layout/Spinner";
 
-// import el Context
-import { CRMContext } from '../../context/CRMContext';
+function Sedes() {
+  const { sedes } = useSedesController();
 
-function Sedes(props) {
+  if (!sedes.length) return <Spinner />;
 
-    // sedes = state, guardarsedes = funcion para guardar el state
-    const [sedes, guardarSedes] = useState([]);
-
-    // utilizar valores del context
-    const [auth, guardarAuth ] = useContext( CRMContext );
-
-    // useEffect para consultar api cuando cargue
-    useEffect( () => {
-
-        if(auth.token !== '') {
-            // Query a la API
-            const consultarAPI = async () => {
-                try {
-                    const sedesConsulta = await odontologoAxios.get('/sedes', {
-                        headers: {
-                            Authorization : `Bearer ${auth.token}`
-                        }
-                    });
-                    guardarSedes(sedesConsulta.data);
-                } catch (error) {
-                    // Error con authorizacion
-                    if(error.response.status = 500) {
-                        props.history.push('/iniciar-sesion');
-                    }
-                }
-            }
-            // llamado a la api
-            consultarAPI();
-
-        } else {
-            props.history.push('/iniciar-sesion');
-        }
-    }, [sedes]);
-
-    // Si el state esta como false
-    if(!auth.auth) {
-        props.history.push('/iniciar-sesion');
-    }
-
-
-    // spinner de carga
-    if(!sedes.length) return <Spinner /> 
-
-
-    return (
-        <Fragment>
-            <h2>Sedes</h2>
-
-            <Link to={'/sedes/nuevo'} className="btn btn-verde nvo-odontologo"> 
-                <i className="fas fa-plus-circle"></i>
-                Nueva Sede
-            </Link>
-
-            <ul className="listado-sedes">
-                {sedes.map(sede => (
-                    <Sede 
-                        key={sede._id}
-                        sede={sede}
-                    />
+  return (
+    <Fragment>
+      <div className="btnAdd">
+        <Link to={"/sedes/nuevo"}>
+          <FontAwesomeIcon icon={faPlus} className="add"></FontAwesomeIcon>
+          <p className="add" id="addM">
+            Agregar Sede
+          </p>
+        </Link>
+      </div>      
+      <div className="contenedorTable">
+        <div className="tableTitle">
+          <h2 id="tableTitle">Sedes</h2>
+        </div>
+        
+        <div className="tableModel">
+          <div className="table-responsive">
+            
+            <table>
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Direccion</th>
+                  <th>Telefono</th>
+                  <th>Horario</th>
+                  <th>Estado</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                {sedes.map((sede) => (
+                  <Sede key={sede._id} sede={sede} />
                 ))}
-            </ul>
-        </Fragment>
-    )
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </Fragment>
+  );
 }
 export default Sedes;
