@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import Sede from "./Sede";
 import NuevaSede from "./NuevaSede";
 import { Link } from "react-router-dom";
-import { useSedesController } from './hooksSedes/useSedesController'
+import { useSedesController } from "./hooksSedes/useSedesController";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import Spinner from "../layout/Spinner";
@@ -17,19 +17,16 @@ function Sedes() {
       <div className="btnAdd">
         <Link to={"/sedes/nuevo"}>
           <FontAwesomeIcon icon={faPlus} className="add"></FontAwesomeIcon>
-          <p className="add" id="addM">
-            Agregar Sede
-          </p>
+          <label className="add">Agregar Sede</label>
         </Link>
-      </div>      
+      </div>
       <div className="contenedorTable">
         <div className="tableTitle">
           <h2 id="tableTitle">Sedes</h2>
         </div>
-        
+
         <div className="tableModel">
           <div className="table-responsive">
-            
             <table>
               <thead>
                 <tr>
