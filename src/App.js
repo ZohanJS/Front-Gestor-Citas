@@ -4,9 +4,15 @@ import Navegacion from './componentes/layout/Navegacion';
 import Odontologos from './componentes/odontologos/Odontologos';
 import EditarOdontologo from './componentes/odontologos/EditarOdontologo';
 import NuevoOdontologo from './componentes/odontologos/NuevoOdontologo';
+
 import Sedes from './componentes/sedes/Sedes';
 import EditarSede from './componentes/sedes/EditarSede';
 import NuevaSede from './componentes/sedes/NuevaSede';
+
+import Cupos from './componentes/cupos/Cupos';
+import EditarCupo from './componentes/cupos/EditarCupo';
+import NuevoCupo from './componentes/cupos/NuevoCupo';
+
 import Pedidos from './componentes/pedidos/Pedidos';
 import NuevoPedido from './componentes/pedidos/NuevoPedido';
 import Login from './componentes/auth/Login';
@@ -36,6 +42,9 @@ function App() {
                 <Route exact path="/api/password-reset/:id/:token" component={Restablecer_contraseña1} />
                 <Route exact path="/registro" component={Registrarse} />
                 <Route exact path="/iniciar-sesion" component={Login} />
+                <Route exact path="/cupos" component={Cupos} />
+                <Route exact path="/cupos/nuevo" component={NuevoCupo} />
+                <Route exact path="/cupos/editar/" component={EditarCupo} />
                 /restabler-contraseña
               </Switch>
             </main>

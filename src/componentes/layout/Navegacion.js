@@ -32,6 +32,7 @@ const Navegacion = (props) => {
                 <Link to={"/sedes"} className="sedes">Sedes</Link>
                 <Link to={"/"} className="odontologos">Odontologos</Link>
                 <Link to={"/pedidos"} className="pedidos">Horario</Link>
+                <Link to={"/cupos"} className="cupos">Cupos</Link>
                 
                 { auth.auth ? (
                         <button 
