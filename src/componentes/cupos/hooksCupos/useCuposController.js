@@ -22,6 +22,7 @@ export function useCuposController() {
           );
           guardarCupos(cuposConsulta.data["cupos"]);
         } catch (error) {
+          console.log("Error",error)
           if ((error.response.status = 500)) {
             push("/iniciar-sesion");
           }
