@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import Odontologo from "./Odontologo";
-import NuevoOdontologo from "./NuevoOdontologo";
+
 import { Link } from "react-router-dom";
 import { useOdontologosController } from "./hooks/UseOdontologosController";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -35,7 +35,7 @@ function Odontologos() {
                   <th>Telefono</th>
                   <th>Documento</th>
                   <th>Horario</th>
-                  <th>Acciones</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>

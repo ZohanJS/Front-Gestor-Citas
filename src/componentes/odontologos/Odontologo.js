@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
-import Swal from 'sweetalert2';
+
 import './tables.css';
-import odontologoAxios from '../../config/axios';
+
 import {Button} from 'reactstrap';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faPen, faTrashAlt} from '@fortawesome/free-solid-svg-icons';
-import EditarOdontologo from "./EditarOdontologo";
+import {faPen, faTrashAlt, faCalendarAlt} from '@fortawesome/free-solid-svg-icons';
+
 import { useHistory } from "react-router-dom";
 import HorarioOdontologo from './horariosOdontolo';
 import Modal from 'react-modal';
@@ -16,7 +16,7 @@ function Odontologo({ odontologo }) {
   const { nombre, apellidos, email, telefono, _id } = odontologo;
   const { push } = useHistory()
 
-  const eliminarOdontologo = () => {
+ /*  const eliminarOdontologo = () => {
     Swal.fire({
       title: '¿Estas seguro?',
       text: "Un odontologo eliminado no se puede recuperar",
@@ -40,7 +40,7 @@ function Odontologo({ odontologo }) {
 
       }
     });
-  };
+  }; */
   function openModal() {
     setShowOdontologo(true);
   }
@@ -55,10 +55,10 @@ function Odontologo({ odontologo }) {
       <td>{email}</td>
       <td>{telefono}</td>
       <td>0</td>
-      <td><Button onClick={openModal} className="btnIcon" id="delete"><FontAwesomeIcon icon={faTrashAlt}></FontAwesomeIcon></Button></td>
+      <td><Button onClick={openModal} className="btnIcon" id="calendar"><FontAwesomeIcon icon={faCalendarAlt}></FontAwesomeIcon></Button></td>
       <td>
         <div>
-          <Button onClick={eliminarOdontologo} className="btnIcon" id="delete"><FontAwesomeIcon icon={faTrashAlt}></FontAwesomeIcon></Button>
+      {/*     <Button onClick={eliminarOdontologo} className="btnIcon" id="delete"><FontAwesomeIcon icon={faTrashAlt}></FontAwesomeIcon></Button> */}
           <Button onClick={() => push('/odontologos/editar', { odontologo })} className="btnIcon" id="edit"><FontAwesomeIcon icon={faPen}></FontAwesomeIcon></Button>
         </div>
       </td>

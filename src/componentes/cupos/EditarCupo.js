@@ -9,8 +9,9 @@ function EditarCupo({}){
     
     return (
       <div className="">
-        <h1>Editar Cupo </h1>
+        
         <CupoForm
+          titulo="Editar Cupo"
           handleSubmit={editarCupo}
           handleChange={handleChange}
           validarSede={validarCupo}

@@ -22,13 +22,9 @@ function Restablecer_contraseña(props) {
   const restablecer = async (e) => {
     e.preventDefault();
     try {
-      odontologoAxios.post("/api/password-reset", {"email":texto});
+      odontologoAxios.post("/api/password-reset", { email: texto });
 
-      Swal.fire(
-        "Correo enviado",
-        "",
-        "success"
-      );
+      Swal.fire("Correo enviado", "", "success");
       cambiarEstadoModal1(false);
       cambiarEstadoModal2(true);
     } catch (error) {
@@ -38,7 +34,6 @@ function Restablecer_contraseña(props) {
         text: error.response.data.mensaje,
       });
     }
-    
   };
 
   return (
@@ -60,19 +55,16 @@ function Restablecer_contraseña(props) {
               >
                 <BotonesRestablecer>
                   <BtnRestablecer
-                    className="btn btn-primary"
-                    id="btnrest1"
+                    className="BtnRestablecer btn btn-primary"
                     onClick={() => props.history.push("/iniciar-sesion")}
-                  >
-                    Cancelar
+                  >Cancelar
                   </BtnRestablecer>
                   <BtnRestablecer
                     type="submit"
                     className="BtnRestablecer btn btn-primary"
-                    id="btnrest2"
                     value="Aceptar"
-                  > Aceptar
-                    </BtnRestablecer>
+                  >Aceptar
+                  </BtnRestablecer>
                 </BotonesRestablecer>
               </Modal>
               <Modal
@@ -81,13 +73,12 @@ function Restablecer_contraseña(props) {
                 mostrarInput={false}
               >
                 <BotonesRestablecer1>
-                 <BtnRestablecer
+                  <BtnRestablecer
                     type="submit"
                     className="BtnRestablecer btn btn-primary"
-                    id="btnrest2" 
-                  > Reenviar código
-                    </BtnRestablecer>
-                    </BotonesRestablecer1>
+                  >Reenviar código
+                  </BtnRestablecer>
+                </BotonesRestablecer1>
               </Modal>
             </div>
           </form>
@@ -111,10 +102,10 @@ const BtnRestablecer = styled.button`
   width: 40%;
 `;
 
-const BotonesRestablecer1=styled.div`
-display: flex;
-justify-items: center;
-align-items: center;
-justify-content: center;
-width: 100%;
+const BotonesRestablecer1 = styled.div`
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 `;

@@ -89,17 +89,18 @@
 }
 .btn_restablecer {
   margin-top: 3%;
-  width: 40%;
-}
-#btnrest1 {
-  background-color: #3d82db;
+  width: 40%;  
 }
 
-#btnrest2 {
-  background-color: #13253c;
-}
+
 
 .BtnRestablecer { 
 margin-top: 3%;
 width: 40%;
+background-color: var(--dark) !important;
+border:0;
+padding: 10px;
+font-size: 20px;
+border-radius:10px;
 }
+

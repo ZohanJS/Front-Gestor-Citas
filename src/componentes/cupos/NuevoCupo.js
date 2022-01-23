@@ -7,8 +7,8 @@ function NuevoCupo(){
 
   return (
     <div >
-      <h1>Nueva Cupo </h1>
       <CupoForm
+        titulo="Nuevo Cupo"
         handleSubmit={agregarCupo}
         handleChange={handleChange}
         validarSede={validarCupo}

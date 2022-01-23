@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Input, Row, Button, Label, FormGroup, Col } from "reactstrap";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTooth } from "@fortawesome/free-solid-svg-icons";
 import "./FormularioCrud.css";

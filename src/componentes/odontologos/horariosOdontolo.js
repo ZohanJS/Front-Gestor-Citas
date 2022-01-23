@@ -1,75 +1,101 @@
-import React, {useState} from 'react';
-import './tables.css';
+import React, { useState } from "react";
+import "./tables.css";
 import { useCuposController } from "../../componentes/cupos/hooksCupos/useCuposController";
 import odontologoAxios from "../../config/axios";
-import {CRMContext} from '../../context/CRMContext';
-import {useContext} from "react";
-import {Button} from 'reactstrap';
+import { CRMContext } from "../../context/CRMContext";
+import { useContext } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
+import { Button } from "reactstrap";
 
+function HorarioOdontologo({ odontologo, closeModal }) {
+  const { cupos } = useCuposController();
+  const [auth] = useContext(CRMContext);
+  let listaCupos = [];
+  let date;
 
-function HorarioOdontologo( {odontologo, closeModal} ) {
-    const { cupos } = useCuposController();
-    const [auth ] = useContext(CRMContext );
-    let listaCupos = [];
-    let date;
-
-    function onChange(event) {
-        
-        if (!listaCupos.includes(event.target.value)){
-            listaCupos = [...listaCupos,event.target.value]
-        }else{
-            listaCupos = listaCupos.filter(cupo=>cupo!==event.target.value)            
-        }
+  function onChange(event) {
+    if (!listaCupos.includes(event.target.value)) {
+      listaCupos = [...listaCupos, event.target.value];
+    } else {
+      listaCupos = listaCupos.filter((cupo) => cupo !== event.target.value);
     }
-    function onChangeDate(event) {
-        date = event.target.value 
-        console.log("FECHA", date)
-    } 
-    const guardarHorario = idOdontologo => {
+  }
+  function onChangeDate(event) {
+    date = event.target.value;
+    console.log("FECHA", date);
+  }
+  const guardarHorario = (idOdontologo) => {
+    const data = {
+      idOdontologo,
+      'idCupos': listaCupos.map((cupo) => ({ cupo })),
+      'fecha': date,
+    };
+    odontologoAxios.post(`/api/horario/create`, data, {
+      headers: {
+        Authorization: `Bearer ${auth.token}`,
+      },
+    });
+  };
 
-            const data = {
-                idOdontologo,
-                'idCupos': listaCupos.map(cupo=>({ cupo })),
-                'fecha': date
-            }
-            odontologoAxios.post(`/api/horario/create`, data,{
-                
-            headers: {
-                Authorization: `Bearer ${auth.token}`,
-                },
-            })
-    }  
-    
-    return <div>
+  return (
+    <div>
+      <div className="flexHorarioTitle">
         <p>{`${odontologo.nombre} ${odontologo.apellidos}`}</p>
-        <input onChange={onChangeDate} type='date' name='fecha' id='fecha' ></input>
-        <div className="">
-          <div className="">
+        <FontAwesomeIcon
+          icon={faCalendarAlt}
+          className="iconoHorario"
+        ></FontAwesomeIcon>
+      </div>
+      <input
+        onChange={onChangeDate}
+        type="date"
+        name="fecha"
+        id="fecha"
+        className="form-control us-cn dateHorarioModal"
+      ></input>
+      <div className="contenedorTableHorario">
+        <div className="tableModelHorario">
+          <div className="table-responsive">
             <table>
               <thead>
                 <tr>
-                  <th style={{color:'#000'}}>Hora Inicio</th>
-                  <th style={{color:'#000'}}>Hora Fin</th>                  
+                  <th className="thHorario" >Activos</th>
+                  <th className="thHorario">Hora Inicio</th>
+                  <th className="thHorario">Hora Fin</th>
                 </tr>
               </thead>
               <tbody>
                 {cupos.map((cupo) => (
-                  <div key={cupo._id} > 
-                       
-                      <label>
-                          <input onChange={onChange} type="checkbox" value={cupo._id}/> 
-                          <span> {cupo.horaInicio} - </span>
-                          <span> {cupo.horaFin} </span> </label>          
-                  </div>
+                  <tr key={cupo._id}>
+                    <td className="thHorario">
+                      <input
+                        onChange={onChange}
+                        type="checkbox"
+                        value={cupo._id}
+                      />
+                    </td>
+                    <td className="thHorario"> {cupo.horaInicio}  </td>
+                    <td className="thHorario"> {cupo.horaFin} </td>
+                  </tr>
                 ))}
               </tbody>
             </table>
-            <button onClick={() => guardarHorario(odontologo._id) } className="btnIcon" id="guardar">Guardar</button>
-            <button onClick={closeModal}>close</button>
           </div>
         </div>
-        
-        </div>
-    
+      </div>
+      <div className="BotonesHorario">
+      
+      <button onClick={closeModal} className="BtnHorario btn btn-primary" id="btnrest1">Close</button>
+      <button
+        onClick={() => guardarHorario(odontologo._id)}
+        className="BtnHorario btn btn-primary"
+        id="btnrest2"
+      >
+        Guardar
+      </button>
+      </div>
+    </div>
+  );
 }
-export default HorarioOdontologo
+export default HorarioOdontologo;

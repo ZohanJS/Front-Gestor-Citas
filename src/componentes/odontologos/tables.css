@@ -3,8 +3,8 @@
   --azulClaro: #3d82db;
   --rojo: #a01c48;
   --naranja: #f58549;
-  --amarillo: #eca400;
   --blanco: #edf5ff;
+  --verde: #14a02c;
 
   --gris: #969696;
   --grisOscuro: #707070;
@@ -55,18 +55,18 @@ table {
   width: 100%;
 }
 th {
-  position: flex;
   top: 0;
   size: auto;
   font-size: 1.5rem;
 }
 
-th,
-td {
+th,td {
   text-align: center;
   padding: 11px;
   color: white;
 }
+
+
 td {
   border-bottom: 0.3px solid var(--azulOscuro);
 }
@@ -97,6 +97,11 @@ tr:hover td {
   border: none;
 }
 
+#calendar:hover {
+  background: transparent;
+  color: var(--naranja);
+}
+
 #delete:hover {
   background: transparent;
   color: var(--rojo);
@@ -104,7 +109,7 @@ tr:hover td {
 
 #edit:hover {
   background: transparent;
-  color: var(--amarillo);
+  color: var(--verde);
 }
 
 .btnAdd {
@@ -123,11 +128,9 @@ tr:hover td {
 
 .add {
   color: white;
-  font-size: 1.2em; 
-  margin-right:5px; 
-
+  font-size: 1.2em;
+  margin-right: 5px;
 }
-
 
 .btnAdd:hover {
   background: #2c5891;
@@ -150,3 +153,99 @@ tr:hover td {
 .width_form {
   width: 80%;
 }
+
+.flexHorarioTitle{
+  display:flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.flexHorarioTitle p{
+  color: black;
+  size: auto;
+  font-size: 2.5em;
+  font-family: "Ubuntu";
+  text-align: center;
+  margin-bottom:25px;
+  position:relative;
+  display:flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width:70%;
+
+}
+.contenedorTableHorario{
+
+  background: var(--azulClaro);
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 10px;
+  height: 300px; 
+  border-radius: 20px;
+
+}
+
+.thHorario{
+  padding: 20px;
+}
+.tableModelHorario {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+.tableModelHorario::-webkit-scrollbar {
+  width: 15px;
+}
+.tableModelHorario::-moz-scrollbar {
+  width: 12px;
+}
+
+.tableModelHorario::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(44, 88, 145, 0.6);
+}
+
+
+
+.iconoHorario{
+  position:absolute;
+  top:10%;
+  right:15%;
+  color: black;
+  font-size: 2em;
+  
+}
+
+.dateHorarioModal{
+  border:none !important;
+}
+
+.ReactModal__Overlay{
+  background-color: rgba(104, 151, 212, 0.7) !important;
+} 
+
+.ReactModal__Content{
+  padding:40px !important;
+  background: var(--blanco) !important;
+  border-radius: 30px !important;
+  border:none !important;
+  width:50%;
+}
+
+.BotonesHorario{
+  display:flex;
+  justify-content: space-around;
+}
+
+.BtnHorario{
+  margin-top: 3%;
+  width: 30%;
+  background-color: var(--dark) !important;
+  border:0;
+  padding: 10px;
+  font-size: 20px;
+  border-radius:10px;
+}
+
+

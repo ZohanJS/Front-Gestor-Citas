@@ -1,6 +1,6 @@
 import React from 'react';
-import {useContext, useState} from "react";
-import { Link } from 'react-router-dom';
+import {useContext} from "react";
+
 import Swal from 'sweetalert2';
 import odontologoAxios from '../../config/axios';
 import {CRMContext} from '../../context/CRMContext';

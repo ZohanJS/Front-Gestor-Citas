@@ -46,10 +46,16 @@
     font-weight: 900; 
     content: "\f015";
 }
-.navegacion a.pedidos::before {
+.navegacion a.horario::before {
     font-family: "Font Awesome 5 Free"; 
     font-weight: 900; 
     content: "\f073";
+}
+
+.navegacion a.cupos::before {
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900; 
+    content: "\f017";
 }
 .grid {
     display: flex;

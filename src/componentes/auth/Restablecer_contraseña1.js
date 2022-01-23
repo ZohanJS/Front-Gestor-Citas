@@ -7,45 +7,71 @@ import { faTooth } from "@fortawesome/free-solid-svg-icons";
 
 import odontologoAxios from "../../config/axios";
 import Swal from "sweetalert2";
+import { useParams } from "react-router-dom";
 
 function Restablecer_contraseña1(props) {
-  /*  const [estadoModal1, cambiarEstadoModal1] = useState(true);
-  const [estadoModal2, cambiarEstadoModal2] = useState(false);
+  let params = useParams();
 
-  const [texto, setTexto] = useState("");
+  const { id, token } = params;
 
-  const handleInputChange = ({ target }) => {
-    setTexto(target.value);
-  };
+  const [contraseña, guardarContraseña] = useState({});
 
-  const restablecer = async (e) => {
+  const restablecerContraseña = async (e) => {
     e.preventDefault();
-    try {
-      odontologoAxios.post("/api/password-reset", {"email":texto});
 
-      Swal.fire(
-        "Correo enviado",
-        "",
-        "success"
-      );
-      cambiarEstadoModal1(false);
-      cambiarEstadoModal2(true);
-    } catch (error) {
+    if (contraseña.password == contraseña.password2) {
+      if (contraseña.password.length > 5) {
+        let contraseñaFinal = { "password": contraseña.password };
+        try {
+          odontologoAxios.post(
+            `/api/password-reset/${id}/${token}`,
+            contraseñaFinal
+          );
+
+          Swal.fire(
+            "Contraseña Restablecida",
+            "Serás redirijido(a) al inicio de sesión.",
+            "success"
+          );
+          props.history.push("/iniciar-sesion");
+        } catch (error) {
+          Swal.fire({
+            type: "Error",
+            title: "No se pudo restablecer tu contraseña",
+            text: error.response.data.mensaje,
+          });
+        }
+      } else {
+        Swal.fire({
+          type: "Error",
+          title: "No se pudo restablecer tu contraseña",
+          text: "La contraseña debe ser minimo de 6 caracteres",
+        });
+      }
+    } else {
       Swal.fire({
         type: "Error",
-        title: "No se pudo registrar con éxito tu info :(",
-        text: error.response.data.mensaje,
+        title: "No se pudo restablecer tu contraseña",
+        text: "Las contraseñas no coinciden ",
       });
     }
-    
   };
- */
+  const leerContraseña = (e) => {
+    guardarContraseña({
+      ...contraseña,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   return (
     <div>
       <div className="containerRestablecer">
         <div className="containerRestablecer2">
           <h2 className="restablecerTitle">Restablecer Contraseña</h2>
-          <form className="containerRestablecer3" /* onSubmit={restablecer} */>
+          <form
+            className="containerRestablecer3"
+            onSubmit={restablecerContraseña}
+          >
             <div className="modalRestablecer">
               <FontAwesomeIcon
                 icon={faTooth}
@@ -61,31 +87,33 @@ function Restablecer_contraseña1(props) {
                       required
                       className="form-control"
                       placeholder="contraseña"
+                      onChange={leerContraseña}
                     />
                   </div>
                   <div>
                     <TituloModal>Digita nuevamente tu contraseña</TituloModal>
                     <input
                       type="password"
-                      name="password"
+                      name="password2"
                       required
                       className="form-control"
                       placeholder="contraseña"
+                      onChange={leerContraseña}
                     />
                   </div>
                 </ContenedorModal>
                 <BotonesRestablecer>
                   <BtnRestablecer
-                    className="btn btn-primary"
-                    id="btnrest1"
+                    className="BtnRestablecer btn btn-primary"
+                    
                     onClick={() => props.history.push("/iniciar-sesion")}
                   >
                     Cancelar
                   </BtnRestablecer>
                   <BtnRestablecer
                     type="submit"
-                    className="btn btn-primary"
-                    id="btnrest2"
+                    className="BtnRestablecer btn btn-primary"
+                    
                   >
                     Aceptar
                   </BtnRestablecer>
