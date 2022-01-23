@@ -48,7 +48,7 @@ export function useNuevaSedeController() {
           )
 
         }
-        push('/');
+        push('/sedes');
       }).catch(() => {
       Swal.fire({
         type: 'error',

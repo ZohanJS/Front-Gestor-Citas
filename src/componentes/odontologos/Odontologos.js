@@ -17,7 +17,7 @@ function Odontologos() {
       <div className="btnAdd">
         <Link to={"/odontologos/nuevo"}>
           <FontAwesomeIcon icon={faPlus} className="add"></FontAwesomeIcon>
-          <label className="add">Agregar Médico</label>
+          <label className="add">Odontologo</label>
         </Link>
       </div>
       <div className="contenedorTable">

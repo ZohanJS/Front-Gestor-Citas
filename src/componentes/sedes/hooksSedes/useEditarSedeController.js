@@ -41,7 +41,7 @@ export function useEditarSedeController(currentSede) {
           )
 
         }
-        push('/');
+        push('/sedes');
       }).catch(() => {
       Swal.fire({
         type: 'error',

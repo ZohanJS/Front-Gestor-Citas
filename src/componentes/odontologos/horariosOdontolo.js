@@ -6,11 +6,14 @@ import { CRMContext } from "../../context/CRMContext";
 import { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
-import { Button } from "reactstrap";
+import Swal from 'sweetalert2';
+import {useHistory} from 'react-router-dom'
+
 
 function HorarioOdontologo({ odontologo, closeModal }) {
   const { cupos } = useCuposController();
   const [auth] = useContext(CRMContext);
+  const { push } = useHistory()
   let listaCupos = [];
   let date;
 
@@ -35,7 +38,31 @@ function HorarioOdontologo({ odontologo, closeModal }) {
       headers: {
         Authorization: `Bearer ${auth.token}`,
       },
-    });
+    })
+    .then(res => {
+      console.log(res.data.ok)
+      if(!res.data.ok) {
+        Swal.fire({
+          type: 'error',
+          title: 'Hubo un error',
+          text: res.data.msg
+        })
+      } else {        
+        Swal.fire(
+          'Se agregó el horario',
+          res.data.mensaje,
+          'success'
+        )
+
+      }
+      push('/');
+    }).catch(() => {
+    Swal.fire({
+      type: 'error',
+      title: 'Hubo un error',
+      text: 'Intente nuevamente'
+    })
+  });
   };
 
   return (
