@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
 import {useHistory} from 'react-router-dom'
 
 
-function HorarioOdontologo({ odontologo, closeModal }) {
+function HorarioOdontologo({ odontologo, fecha, idHorario, closeModal }) {
   const { cupos } = useCuposController();
   const [auth] = useContext(CRMContext);
   const { push } = useHistory()
@@ -32,9 +32,9 @@ function HorarioOdontologo({ odontologo, closeModal }) {
     const data = {
       idOdontologo,
       'idCupos': listaCupos.map((cupo) => ({ cupo })),
-      'fecha': date,
+      'fecha': fecha,
     };
-    odontologoAxios.post(`/api/horario/create`, data, {
+    odontologoAxios.put(`/api/horario/update/${idHorario}`, data, {
       headers: {
         Authorization: `Bearer ${auth.token}`,
       },
@@ -49,13 +49,13 @@ function HorarioOdontologo({ odontologo, closeModal }) {
         })
       } else {        
         Swal.fire(
-          'Se agregó el horario',
+          'Se actualizo el horario',
           res.data.mensaje,
           'success'
         )
 
       }
-      push('/');
+      push('/horario');
     }).catch(() => {
     Swal.fire({
       type: 'error',
@@ -79,6 +79,8 @@ function HorarioOdontologo({ odontologo, closeModal }) {
         type="date"
         name="fecha"
         id="fecha"
+        value={fecha}
+        disabled
         className="form-control us-cn dateHorarioModal"
       ></input>
       <div className="contenedorTableHorario">
@@ -119,7 +121,7 @@ function HorarioOdontologo({ odontologo, closeModal }) {
         className="BtnHorario btn btn-primary"
         id="btnrest2"
       >
-        Guardar
+        Actualizar
       </button>
       </div>
     </div>
