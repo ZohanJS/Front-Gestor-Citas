@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState}from 'react';
 import {useContext} from "react";
 
 import Swal from 'sweetalert2';
@@ -9,11 +9,21 @@ import {faPen, faTrashAlt} from '@fortawesome/free-solid-svg-icons';
 import {Button} from 'reactstrap';
 import { useHistory } from "react-router-dom";
 import Cupos from '../cupos/Cupos';
+import HorarioOdontologo from './horariosOdontolo';
+import Modal from 'react-modal';
 
 function Horario({horario}) {
     const { push } = useHistory()
     const [auth ] = useContext(CRMContext);
+    const [showHorario, setShowHorario] = useState(false)
+
+    function openModal() {
+      setShowHorario(true);
+    }
     
+    function closeModal() {
+      setShowHorario(false);
+    }
     const eliminarHorario = id => {
         Swal.fire({
             title: '¿Estás seguro?',
@@ -76,9 +86,32 @@ function Horario({horario}) {
                 <td>
                     <div>
                         <Button onClick={eliminarHorario} className="btnIcon" id="delete"><FontAwesomeIcon icon={faTrashAlt}></FontAwesomeIcon></Button>
-                        <Button onClick={() => push('/horario/editar', { horario })} className="btnIcon" id="edit"><FontAwesomeIcon icon={faPen}></FontAwesomeIcon></Button>
+                        <Button onClick={openModal} className="btnIcon" className="btnIcon" id="edit"><FontAwesomeIcon icon={faPen}></FontAwesomeIcon></Button>
                     </div>
                 </td>
+                <Modal
+                    isOpen={showHorario}
+                    onRequestClose={closeModal}
+                    style={{
+                      content: {
+                        top: '50%',
+                        left: '50%',
+                        right: 'auto',
+                        bottom: 'auto',
+                        marginRight: '-50%',
+                        transform: 'translate(-50%, -50%)',
+                      },
+                    }}
+                  >
+                  <HorarioOdontologo
+                    odontologo={idOdontologo}
+                    fecha={fecha}
+                    idHorario={horario._id}
+                    closeModal={closeModal}
+                  />
+
+          
+                </Modal>
         </tr>
     )
 }
