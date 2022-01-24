@@ -9,7 +9,7 @@ const initialValue = {
   direccion:'',
   telefono :'',
   horario:'',
-  estado:''
+  estado: true
 }
 
 export function useNuevaSedeController() {
@@ -24,8 +24,26 @@ export function useNuevaSedeController() {
     })
   }
 
+  function horarioSede(hora) {
+    let horas = hora.split(':');
+    let data = '';
+    if(parseInt(horas[0]) < 12) {
+      return data = `${hora} AM`
+    }
+    else{
+      if(parseInt(horas[0]) == 12) {
+        return data = `${hora} PM`
+      } 
+      if(parseInt(horas[0]) == 0) {
+        return data = `${horas[0]+12}:${horas[1]} AM`
+      } 
+      return data = `${horas[0]-12}:${horas[1]} PM`
+    }
+  }
+
   function agregarSede(event) {
     event.preventDefault();
+    sede.horario = `${horarioSede(sede.horaInicioSede)} - ${horarioSede(sede.horaFinSede)}`
     console.log(sede)
     odontologoAxios.post('/api/sede/create', sede, {
       headers: {
@@ -48,7 +66,7 @@ export function useNuevaSedeController() {
           )
 
         }
-        push('/');
+        push('/sedes');
       }).catch(() => {
       Swal.fire({
         type: 'error',
@@ -59,8 +77,8 @@ export function useNuevaSedeController() {
   }
 
   function validarSede() {
-    const {nombre, direccion, telefono, horario, estado} = sede;
-    return !nombre.length || !direccion.length || !telefono.length || !horario.length || !estado.length;
+    const {nombre, direccion, telefono, horaInicioSede, horaFinSede, estado} = sede;
+    return !nombre.length || !direccion.length || !telefono.length || !horaInicioSede.length || !horaFinSede.length || !estado.length;
   }
 
   if(!auth.auth && (localStorage.getItem('token') === auth.token ) ) {

@@ -48,7 +48,6 @@ function Sede({sede}) {
                 <td className="estado">{(estado)?"Activa":"Inactiva"}</td>
                 <td>
                     <div>
-                        <Button onClick={eliminarSede} className="btnIcon" id="delete"><FontAwesomeIcon icon={faTrashAlt}></FontAwesomeIcon></Button>
                         <Button onClick={() => push('/sedes/editar', { sede })} className="btnIcon" id="edit"><FontAwesomeIcon icon={faPen}></FontAwesomeIcon></Button>
                     </div>
                 </td>

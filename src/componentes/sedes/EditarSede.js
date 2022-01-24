@@ -9,8 +9,8 @@ function EditarSede({}){
     
     return (
       <div className="">
-        <h1>Editar Sede </h1>
         <SedeForm
+          titulo="Editar sede"
           handleSubmit={editarSede}
           handleChange={handleChange}
           validarSede={validarSede}

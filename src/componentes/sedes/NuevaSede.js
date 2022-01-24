@@ -7,8 +7,8 @@ function NuevaSede(){
 
   return (
     <div >
-      <h1>Nueva Sede </h1>
       <SedeForm
+        titulo="Nueva Sede"
         handleSubmit={agregarSede}
         handleChange={handleChange}
         validarSede={validarSede}

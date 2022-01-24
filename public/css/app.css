@@ -24,6 +24,7 @@ h2 {
     font-family: var(--fontTexto);
     color: white;
     font-size: 3rem;
+    text-align: center;
 }
 .contenedor {
     max-width: 1400px;

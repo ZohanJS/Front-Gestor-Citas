@@ -19,8 +19,27 @@ export function useEditarSedeController(currentSede) {
     })
   }
 
+  function horarioSede(hora) {
+    let horas = hora.split(':');
+    let data = '';
+    if(parseInt(horas[0]) < 12) {
+      return data = `${hora} AM`
+    }
+    else{
+      if(parseInt(horas[0]) == 12) {
+        return data = `${hora} PM`
+      } 
+      if(parseInt(horas[0]) == 0) {
+        return data = `${horas[0]+12}:${horas[1]} AM`
+      } 
+      return data = `${horas[0]-12}:${horas[1]} PM`
+    }
+  }
+
   function editarSede(event) {
     event.preventDefault();
+    sede.horario = `${horarioSede(sede.horaInicioSede)} - ${horarioSede(sede.horaFinSede)}`
+    console.log(sede);
     odontologoAxios.put(`/api/sede/update/${currentSede._id}`, sede, {
       headers: {
         Authorization: `Bearer ${auth.token}`,
@@ -41,7 +60,7 @@ export function useEditarSedeController(currentSede) {
           )
 
         }
-        push('/');
+        push('/sedes');
       }).catch(() => {
       Swal.fire({
         type: 'error',
@@ -52,8 +71,8 @@ export function useEditarSedeController(currentSede) {
   }
 
   function validarSede() {
-    const {nombre, direccion, telefono, horario, estado} = sede;
-    return !nombre.length || !direccion.length || !telefono.length || !horario.length || !estado.length;
+    const {nombre, direccion, telefono, estado, horaInicioSede, horaFinSede} = sede;
+    return !nombre.length || !direccion.length || !telefono.length || !estado.length || !horaInicioSede.length || !horaFinSede.length ;
   }
 
   if(!auth.auth && (localStorage.getItem('token') === auth.token ) ) {
