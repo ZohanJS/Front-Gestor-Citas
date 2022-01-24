@@ -13,6 +13,8 @@ import Cupos from './componentes/cupos/Cupos';
 import EditarCupo from './componentes/cupos/EditarCupo';
 import NuevoCupo from './componentes/cupos/NuevoCupo';
 
+import Horarios from './componentes/horario/Horarios';
+
 import Pedidos from './componentes/pedidos/Pedidos';
 import NuevoPedido from './componentes/pedidos/NuevoPedido';
 import Login from './componentes/auth/Login';
@@ -36,7 +38,7 @@ function App() {
                 <Route exact path="/sedes" component={Sedes} />
                 <Route exact path="/sedes/nuevo" component={NuevaSede} />
                 <Route exact path="/sedes/editar/" component={EditarSede} />
-                <Route exact path="/horario" component={Pedidos} />
+                <Route exact path="/horario" component={Horarios} />
                 <Route exact path="/pedidos/nuevo/:id" component={NuevoPedido} />
                 <Route exact path="/restablecer_contraseña" component={Restablecer_contraseña} />
                 <Route exact path="/api/password-reset/:id/:token" component={Restablecer_contraseña1} />
