@@ -5,6 +5,7 @@ import { faTooth } from "@fortawesome/free-solid-svg-icons";
 import "./FormularioCrud.css";
 import { Link } from "react-router-dom";
 
+import { useSedesController } from "../sedes/hooksSedes/useSedesController";
 
 
 export function OdontologoForm({
@@ -15,6 +16,7 @@ export function OdontologoForm({
   buttonText,
   titulo,
 }) {
+  const { sedes } = useSedesController();
   return (
     <form className="containerFormulario" onSubmit={handleSubmit}>
       <div>
@@ -107,16 +109,16 @@ export function OdontologoForm({
 
           <div>
             <label for="idEspecializacion">Especialización: </label>
-            <select
+            
+            <select                  
               className="form-control us-cn selectRegistro"
               id="idEspecializacion"
               name="idEspecializacion"
             >
-              <option selected>Elige...</option>
-              <option value={odontologo.idEspecializacion}>Sistemas</option>
-              <option value={odontologo.idEspecializacion}>Odontología</option>
-              <option value={odontologo.idEspecializacion}>Arroz</option>
-            </select>
+            <option selected>Elige...</option>
+            <option value={odontologo.idEspecializacion}>Odontología</option>
+          </select>
+            
           </div>
           <div>
             <label for="idSede">Sede: </label>
@@ -126,10 +128,10 @@ export function OdontologoForm({
               name="idSede"
             >
               <option selected>Elige...</option>
-              <option value={odontologo.idSede}>Neiva</option>
-              <option value={odontologo.idSede}>Bogotá</option>
-              <option value={odontologo.idSede}>Cartagena</option>
-            </select>
+               {sedes.map((sede) => (
+                  <option value={sede._id}>{sede.nombre}</option>
+                ))}
+          </select>              
           </div>
 
           <div>
