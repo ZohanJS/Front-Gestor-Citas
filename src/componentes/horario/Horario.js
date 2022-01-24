@@ -73,16 +73,16 @@ function Horario({horario}) {
     const {_id, fecha, idCupos, idOdontologo} = horario;
 
     return (
-        <tr className="horario">
+        <tr className="horariotable">
                 <td className="Fecha">{fecha}</td>
                 <td className="Odontologo">{idOdontologo.nombre} {idOdontologo.apellidos}</td>       
-                {idCupos.map((cupo) => {
+                <td className="CupoAuto">{idCupos.map((cupo) => {
                   return (
                     <div  key={cupo._id}>
                     {cupo.cupo.horaInicio} - {cupo.cupo.horaFin}
                   </div>
                   )
-                })}
+                })}</td>
                 <td>
                     <div>
                         <Button onClick={eliminarHorario} className="btnIcon" id="delete"><FontAwesomeIcon icon={faTrashAlt}></FontAwesomeIcon></Button>
