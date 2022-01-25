@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import './Login.css';
-
+import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTooth} from "@fortawesome/free-solid-svg-icons";
 
@@ -12,9 +12,10 @@ import odontologoAxios from "../../config/axios";
 import { CRMContext } from "../../context/CRMContext";
 
 function Login(props) {
+  const { push } = useHistory();
   const [auth, guardarAuth] = useContext(CRMContext);
   const [credenciales, guardarCredenciales] = useState({});
-
+  if(auth.auth) {push('/');}
   const iniciarSesion = async (e) => {
     e.preventDefault();
 

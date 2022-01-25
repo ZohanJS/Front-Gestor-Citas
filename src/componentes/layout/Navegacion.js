@@ -8,11 +8,10 @@ import './navegacion.css';
 const Navegacion = (props) => {
 
     const [auth, guardarAuth] = useContext(CRMContext);
-
     if(!auth.auth) return null;
 
     const cerrarSesion = () => {
-        // auth.auth = false y el token se remueve
+
         guardarAuth({
             token: '',
             auth: false
@@ -20,7 +19,6 @@ const Navegacion = (props) => {
 
         localStorage.setItem('token', '');
 
-        // redireccionar
         props.history.push('/iniciar-sesion');
     }
 

@@ -24,27 +24,9 @@ export function useNuevaSedeController() {
     })
   }
 
-  function horarioSede(hora) {
-    let horas = hora.split(':');
-    let data = '';
-    if(parseInt(horas[0]) < 12) {
-      return data = `${hora} AM`
-    }
-    else{
-      if(parseInt(horas[0]) == 12) {
-        return data = `${hora} PM`
-      } 
-      if(parseInt(horas[0]) == 0) {
-        return data = `${horas[0]+12}:${horas[1]} AM`
-      } 
-      return data = `${horas[0]-12}:${horas[1]} PM`
-    }
-  }
-
   function agregarSede(event) {
     event.preventDefault();
-    sede.horario = `${horarioSede(sede.horaInicioSede)} - ${horarioSede(sede.horaFinSede)}`
-    console.log(sede)
+    console.log(sede);
     odontologoAxios.post('/api/sede/create', sede, {
       headers: {
         Authorization: `Bearer ${auth.token}`,
@@ -87,3 +69,4 @@ export function useNuevaSedeController() {
 
   return {handleChange, validarSede, agregarSede, sede}
 }
+

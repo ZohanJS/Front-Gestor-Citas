@@ -5,7 +5,7 @@ const CRMProvider = props => {
     const token = localStorage.getItem('token') || ''
     const [auth, guardarAuth ] = useState({
         token: token,
-        auth: !!token
+        auth: false
     });
 
     return (

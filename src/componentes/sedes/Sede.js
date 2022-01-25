@@ -22,7 +22,6 @@ function Sede({sede}) {
             cancelButtonText : 'No, Cancelar'
         }).then((result) => {
             if (result.value) {
-              // eliminar en la rest api
               odontologoAxios.delete(`/sedes/${id}`)
                 .then(res => {
                     if(res.status === 200) {
@@ -37,14 +36,14 @@ function Sede({sede}) {
         })
     }
 
-    const {_id, nombre, direccion, telefono, horario, estado } = sede;
+    const {_id, nombre, direccion, telefono, horaInicioSede, horaFinSede, estado } = sede;
 
     return (
         <tr className="sede">
                 <td className="nombre">{nombre}</td>
                 <td className="direccion">{direccion}</td>
                 <td className="telefono">{telefono}</td>
-                <td className="horario">{horario}</td>
+                <td className="horario">{horaInicioSede} AM - {horaFinSede} PM</td>
                 <td className="estado">{(estado)?"Activa":"Inactiva"}</td>
                 <td>
                     <div>
@@ -55,3 +54,20 @@ function Sede({sede}) {
     )
 }
 export default Sede;
+
+ // function horarioSede(hora) {
+    //     let horas = hora.split(':');
+    //     let data = '';  
+    //     if(parseInt(horas[0]) < 12) {
+    //     return data = `${hora} AM`
+    //     }
+    //     else{
+    //     if(parseInt(horas[0]) == 12) {
+    //         return data = `${hora} PM`
+    //     } 
+    //     if(parseInt(horas[0]) == 0) {
+    //         return data = `${horas[0]+12}:${horas[1]} AM`
+    //     } 
+    //     return data = `${horas[0]-12}:${horas[1]} PM`
+    //     }
+    // }

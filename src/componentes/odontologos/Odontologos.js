@@ -1,15 +1,19 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useContext } from "react";
 import Odontologo from "./Odontologo";
-
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useOdontologosController } from "./hooks/UseOdontologosController";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import Spinner from "../layout/Spinner";
+import { CRMContext } from '../../context/CRMContext';
 
 function Odontologos() {
   const { odontologos } = useOdontologosController();
-
+  const { push } = useHistory();
+  const [auth, guardarAuth] = useContext(CRMContext);
+  if(!auth.auth) {push('/iniciar-sesion');}
+  
   if (!odontologos.length) return <Spinner />;
 
   return (
