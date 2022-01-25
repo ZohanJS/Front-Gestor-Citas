@@ -15,6 +15,7 @@ function NuevoOdontologo() {
         validarOdontologo={validarOdontologo}
         odontologo={odontologo}
         buttonText="Agregar"
+        mostrarContraseña={true}
       />
     </div>
   );

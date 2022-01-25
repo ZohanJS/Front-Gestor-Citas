@@ -16,6 +16,7 @@ function EditarOdontologo({}){
           validarOdontologo={validarOdontologo}
           odontologo={odontologo}
           buttonText="Editar"
+          mostrarContraseña={false}
         />
       </div>
     )

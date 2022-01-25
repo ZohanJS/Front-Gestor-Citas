@@ -11,7 +11,7 @@ import { useSedesController } from "../sedes/hooksSedes/useSedesController";
 export function OdontologoForm({
   handleSubmit,
   handleChange,
-  validarOdontologo,
+  mostrarContraseña,
   odontologo,
   buttonText,
   titulo,
@@ -63,6 +63,23 @@ export function OdontologoForm({
               required
               autoComplete="off"
             />
+          </div>
+          <div>
+            <label> Estado: </label>
+            <select
+              className="form-control us-cn selectRegistro"
+              id="estado"
+              name="estado"
+              placeholder="Estado"
+              type="select"
+              value={odontologo.estado}
+              onChange={handleChange}
+              defaultValue={odontologo.estado}
+            >
+              <option selected>Elige...</option>
+              <option value={true}>Activo </option>
+              <option value={false}>Inactivo </option>
+            </select>
           </div>
           <div>
             <label for="documento">Número de identificación: </label>
@@ -133,8 +150,10 @@ export function OdontologoForm({
                 ))}
           </select>              
           </div>
-
+          
+          {mostrarContraseña && (
           <div>
+            
             <label for="contraseña">Contraseña: </label>
             <input
               className="form-control us-cn"
@@ -147,7 +166,7 @@ export function OdontologoForm({
               required
               autoComplete="new-password"
             />
-          </div>
+          </div>)}
         </div>
       </div>
       <div className="botoneraRegistro">

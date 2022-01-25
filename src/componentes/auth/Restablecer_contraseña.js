@@ -21,19 +21,22 @@ function Restablecer_contraseña(props) {
 
   const restablecer = async (e) => {
     e.preventDefault();
-    try {
-      odontologoAxios.post("/api/password-reset", { email: texto });
-
-      Swal.fire("Correo enviado", "", "success");
-      cambiarEstadoModal1(false);
-      cambiarEstadoModal2(true);
-    } catch (error) {
-      Swal.fire({
-        type: "Error",
-        title: "No se pudo registrar con éxito tu info :(",
-        text: error.response.data.mensaje,
+    odontologoAxios
+      .post("/api/password-reset", { email: texto })
+      .then((res) => {
+        console.log(res.data.ok);
+        if (!res.data.ok) {
+          Swal.fire({
+            type: "error",
+            title: "Hubo un error",
+            text: res.data.msj,
+          });
+        } else {
+          Swal.fire("Correo enviado", res.data.mensaje, "success");
+          cambiarEstadoModal1(false);
+          cambiarEstadoModal2(true);
+        }
       });
-    }
   };
 
   return (
@@ -57,13 +60,15 @@ function Restablecer_contraseña(props) {
                   <BtnRestablecer
                     className="BtnRestablecer btn btn-primary"
                     onClick={() => props.history.push("/iniciar-sesion")}
-                  >Cancelar
+                  >
+                    Cancelar
                   </BtnRestablecer>
                   <BtnRestablecer
                     type="submit"
                     className="BtnRestablecer btn btn-primary"
                     value="Aceptar"
-                  >Aceptar
+                  >
+                    Aceptar
                   </BtnRestablecer>
                 </BotonesRestablecer>
               </Modal>
@@ -76,7 +81,8 @@ function Restablecer_contraseña(props) {
                   <BtnRestablecer
                     type="submit"
                     className="BtnRestablecer btn btn-primary"
-                  >Reenviar código
+                  >
+                    Reenviar código
                   </BtnRestablecer>
                 </BotonesRestablecer1>
               </Modal>

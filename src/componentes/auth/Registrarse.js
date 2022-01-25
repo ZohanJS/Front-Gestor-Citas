@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, useHistory } from "react-router-dom";
 import "./Registrarse.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTooth } from "@fortawesome/free-solid-svg-icons";
@@ -9,31 +9,40 @@ import odontologoAxios from "../../config/axios";
 
 function Registrarse(props) {
 
+  const { push } = useHistory()
   const [credenciales, guardarCredenciales] = useState({});
 
-  const registrarse = async (e) => {
+  function registrarse (e) {
     e.preventDefault();
 
-    try {
       odontologoAxios.post(
         "/api/auth/create",
         credenciales
-      );
+      ).then(res => {
+        if(!res.data.ok) {
+          Swal.fire({
+            type: 'error',
+            title: 'Hubo un error',
+            text: res.data.msg
+          })
+        } else {
+          Swal.fire(
+            'Registro correcto',
+            res.data.mensaje,
+            'success'
+          );
+          push("/iniciar-sesion");
 
-      Swal.fire(
-        "Registro Correcto",
-        "Serás redirijido(a) al inicio de sesión.",
-        "success"
-      );
-      props.history.push("/iniciar-sesion");
-    } catch (error) {
+        }
+        push('/registro');
+      }).catch(() => {
       Swal.fire({
-        type: "Error",
-        title: "No se pudo registrar con éxito tu info :(",
-        text: error.response.data.mensaje,
-      });
-    }
-  };
+        type: 'error',
+        title: 'Hubo un error inesperado',
+        text: 'Intente nuevamente'
+      })
+    })
+  }
 
   const leerDatos = (e) => {
     guardarCredenciales({
@@ -136,15 +145,6 @@ function Registrarse(props) {
               />
             </div>
 
-            <div>
-              <label>Especialización: </label>
-              <select className="form-control us-cn selectRegistro">
-                <option selected>Elige...</option>
-                <option>Sistemas</option>
-                <option>Odontología</option>
-                <option>Arroz con leche</option>
-              </select>
-            </div>
 
             <div>
               <label>Contraseña: </label>
@@ -178,7 +178,7 @@ function Registrarse(props) {
           ></FontAwesomeIcon>
           <div className="botonesRegistro">
             <div className="tratamientodedatos">
-              <input type="checkbox" className=" "></input>
+              <input type="checkbox" className=" " required></input>
               <label>
                 Acepto el tratamiento de datos por parte de la entidad para que
                 maneje mi información.

@@ -13,7 +13,7 @@ import Modal from 'react-modal';
 
 function Odontologo({ odontologo }) {
   const [showOdontologo, setShowOdontologo] = useState(false)
-  const { nombre, apellidos, email, telefono, documento, _id } = odontologo;
+  const { nombre, apellidos, email, telefono, documento, _id, estado } = odontologo;
   const { push } = useHistory()
 
  /*  const eliminarOdontologo = () => {
@@ -55,6 +55,7 @@ function Odontologo({ odontologo }) {
       <td>{email}</td>
       <td>{telefono}</td>
       <td>{documento}</td>
+      <td className="estado">{(estado)?"Activa":"Inactiva"}</td>
       <td><Button onClick={openModal} className="btnIcon" id="calendar"><FontAwesomeIcon icon={faCalendarAlt}></FontAwesomeIcon></Button></td>
       <td>
         <div>
