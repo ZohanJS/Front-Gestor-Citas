@@ -45,8 +45,8 @@ export function useEditarSedeController(currentSede) {
       }).catch(() => {
       Swal.fire({
         type: 'error',
-        title: 'Hubo un error',
-        text: 'Intente nuevamente'
+        title: 'Ya existe una sede con este nombre',
+        text: 'Intentelo nuevamente'
       })
     })
   }
