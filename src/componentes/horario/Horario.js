@@ -75,12 +75,13 @@ function Horario({horario}) {
     return (
         <tr className="horariotable">
                 <td className="Fecha">{fecha}</td>
-                <td className="Odontologo">{idOdontologo.nombre} {idOdontologo.apellidos}</td>       
+                <td className="Odontologo">{idOdontologo.nombre} {idOdontologo.apellidos}</td> 
+                {console.log("idcupos",idCupos)}      
                 <td className="CupoAuto">{idCupos.map((cupo) => {
                   return (
                     <div  key={cupo._id}>
                     {cupo.cupo.horaInicio} - {cupo.cupo.horaFin}
-                  </div>
+                    </div>
                   )
                 })}</td>
                 <td>
