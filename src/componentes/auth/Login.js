@@ -24,12 +24,16 @@ function Login(props) {
         "/api/auth/login",
         credenciales
       );
-      const { token } = respuesta.data;
+
+      const { token, rol, uid, name } = respuesta.data;
       localStorage.setItem("token", token);
 
       guardarAuth({
         token,
         auth: true,
+        rol,
+        uid,
+        name
       });
 
       Swal.fire("Login Correcto", "Has iniciado Sesión", "success");
