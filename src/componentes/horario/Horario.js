@@ -4,6 +4,7 @@ import {useContext} from "react";
 import Swal from 'sweetalert2';
 import odontologoAxios from '../../config/axios';
 import {CRMContext} from '../../context/CRMContext';
+
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faPen, faTrashAlt} from '@fortawesome/free-solid-svg-icons';
 import {Button} from 'reactstrap';
@@ -13,9 +14,9 @@ import HorarioOdontologo from './horariosOdontolo';
 import Modal from 'react-modal';
 
 function Horario({horario}) {
-    const { push } = useHistory()
+    const { push } = useHistory();
     const [auth ] = useContext(CRMContext);
-    const [showHorario, setShowHorario] = useState(false)
+    const [showHorario, setShowHorario] = useState(false);
 
     function openModal() {
       setShowHorario(true);

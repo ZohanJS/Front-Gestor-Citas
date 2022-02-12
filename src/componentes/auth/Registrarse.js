@@ -114,7 +114,7 @@ function Registrarse(props) {
                 autocomplete="off"
               /> */}
               <select id="inputState" className="form-control us-cn selectRegistro" name="tipoDocumento" required onChange={leerDatos} >
-                <option selected>Elige...</option>
+                <option defaultValue>Elige...</option>
                 <option>Cédula de ciudadania</option>
                 <option>Cédula de extranjería</option>
                 <option>Pasaporte</option>

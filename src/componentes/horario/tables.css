@@ -11,6 +11,29 @@
   --grisClaro: #edf5ff;
 }
 
+.botonVerCitasHoy{
+  background-color: var(--azulClaro);
+
+  position: absolute;
+  bottom: 3em;
+  right: 30em;
+  padding: .5rem;
+
+  border-radius: 20px;
+  transition: all .3s ;
+  
+}
+
+.botonVerCitasHoy:hover{
+  background-color: var(--azulOscuro);
+}
+
+
+.botonVerCitasHoy:hover #VerHorario{
+  background-color: transparent;
+}
+
+
 .contenedorTable {
   position: relative;
   background: var(--azulClaro);

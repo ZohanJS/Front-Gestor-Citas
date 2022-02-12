@@ -38,7 +38,7 @@ function Login(props) {
       Swal.fire({
         type: "error",
         title: "Hubo un error",
-        text: error.response.data.mensaje,
+        text: error.respuesta.data.msg,
       });
     }
   };
