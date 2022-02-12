@@ -107,13 +107,13 @@ function Registrarse(props) {
               <label>Tipo de identificación: </label>
               {/* <input
                 type="dropdown"
-                name="tipo_id"
+                
                 required
-                /* onChange={} 
+                
                 className="form-control us-cn"
                 autocomplete="off"
               /> */}
-              <select id="inputState" className="form-control us-cn selectRegistro">
+              <select id="inputState" className="form-control us-cn selectRegistro" name="tipoDocumento" required onChange={leerDatos} >
                 <option selected>Elige...</option>
                 <option>Cédula de ciudadania</option>
                 <option>Cédula de extranjería</option>
