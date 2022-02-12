@@ -48,6 +48,7 @@ export function useEditarSedeController(currentSede) {
         title: 'Ya existe una sede con este nombre',
         text: 'Intentelo nuevamente'
       })
+      push('/sedes');
     })
   }
 

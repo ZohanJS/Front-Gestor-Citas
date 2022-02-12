@@ -22,6 +22,9 @@ import Restablecer_contraseña from './componentes/auth/Restablecer_contraseña'
 import Restablecer_contraseña1 from './componentes/auth/Restablecer_contraseña1';
 import Registrarse from './componentes/auth/Registrarse';
 import { CRMProvider } from './context/CRMContext';
+import Citas from './componentes/Citas/Citas';
+import Inicio from './componentes/layout/Inicio';
+import Perfil from './componentes/Perfil/Perfil';
 
 function App() {
   return (
@@ -32,7 +35,8 @@ function App() {
             <Navegacion />
             <main>
               <Switch>
-                <Route exact path="/" component={Odontologos} />
+                <Route exact path="/" component={Inicio} />
+                <Route exact path="/odontologos" component={Odontologos} />
                 <Route exact path="/odontologos/editar" component={EditarOdontologo} />
                 <Route exact path="/odontologos/nuevo" component={NuevoOdontologo} />
                 <Route exact path="/sedes" component={Sedes} />
@@ -47,6 +51,8 @@ function App() {
                 <Route exact path="/cupos" component={Cupos} />
                 <Route exact path="/cupos/nuevo" component={NuevoCupo} />
                 <Route exact path="/cupos/editar/" component={EditarCupo} />
+                <Route exact path="/citas" component={Citas} />
+                <Route exact path="/perfil" component={Perfil} />
                 /restabler-contraseña
               </Switch>
             </main>
