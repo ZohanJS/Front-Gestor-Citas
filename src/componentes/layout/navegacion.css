@@ -65,6 +65,19 @@ h2 {
     font-weight: 900; 
     content: "\f017";
 }
+
+.navegacion a.citas::before {
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900; 
+    content: "\f46d";
+}
+
+.navegacion a.perfil::before {
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900; 
+    content: "\f2bd";
+}
+
 .grid {
     display: flex;
     width: 100vw;
