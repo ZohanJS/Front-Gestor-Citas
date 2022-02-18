@@ -94,3 +94,19 @@ h2 {
     color: white;
     font-size: 2.5em;
 }
+/* main{
+    flex-grow: 1;
+} */
+
+.gifcito{
+    margin: auto;
+}
+
+.wrapper-inicio{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90%;
+    width: 1050px;
+}

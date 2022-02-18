@@ -27,6 +27,9 @@ function Login(props) {
 
       const { token, rol, uid, name } = respuesta.data;
       localStorage.setItem("token", token);
+      localStorage.setItem("rol", rol);
+      localStorage.setItem("uid", uid);
+      localStorage.setItem("name", name);
 
       guardarAuth({
         token,

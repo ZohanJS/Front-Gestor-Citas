@@ -11,9 +11,9 @@ function Citas() {
   if (loading) {
     return <Spinner/>;
   }
-  // else{
-  //   if (!citas.length) return <h2>No hay citas asignadas</h2>;
-  // }
+   else{
+     if (!citas.length) return <h2>No hay citas asignadas</h2>;
+   }
   return (
     <Fragment>
       <div className="btnAdd">

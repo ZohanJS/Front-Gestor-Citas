@@ -8,15 +8,18 @@ export function useCitasController() {
   const [citas, guardarCitas] = useState([]);
   const [auth] = useContext(CRMContext);
   const [loading, setLoading] = useState(true);
+
+
   if(auth.rol === "usuario" || auth.rol === "administrador" ){
     var url = `/api/cita/usuario/${auth.uid}`;
   }
   else{
     var url = `/api/cita/odontologo/${auth.uid}`;
   }
-    
+  
   useEffect(() => {
     if (auth.token !== "") {
+      
       const consultarAPI = async () => {
         try {
           const citasConsulta = await odontologoAxios.get(
@@ -27,6 +30,7 @@ export function useCitasController() {
               },
             }
           );
+          
           guardarCitas(citasConsulta.data["citas"]);
           setLoading(false);
         } catch (error) {
