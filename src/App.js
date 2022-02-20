@@ -23,6 +23,7 @@ import Restablecer_contraseña1 from './componentes/auth/Restablecer_contraseña
 import Registrarse from './componentes/auth/Registrarse';
 import { CRMProvider } from './context/CRMContext';
 import Citas from './componentes/Citas/Citas';
+import NuevaCita from './componentes/Citas/NuevaCita';
 import Inicio from './componentes/layout/Inicio';
 import Perfil from './componentes/Perfil/Perfil';
 
@@ -52,6 +53,8 @@ function App() {
                 <Route exact path="/cupos/nuevo" component={NuevoCupo} />
                 <Route exact path="/cupos/editar/" component={EditarCupo} />
                 <Route exact path="/citas" component={Citas} />
+                <Route exact path="/citas/nueva" component={NuevaCita} />
+                <Route exact path="/citas/editar" component={Citas} />
                 <Route exact path="/perfil" component={Perfil} />
                 /restabler-contraseña
               </Switch>
