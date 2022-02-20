@@ -12,14 +12,12 @@ import { useTipoCitasController } from "../tipoCitas/hooksTipoCitas/useTipoCitas
 import { useFiltrarCitas } from "../Citas/hooksCitas/useFiltrarCitas"
 import { useHistorialController } from "../historial/hooksHistorial/useHistorialController";
 
-function Citas() {
-  const { historiales } = useHistorialController();
+function CitasOdontologo() {
   const { citas, loading } = useCitasController();
   const { sedes } = useSedesController();
   const { odontologos } = useOdontologosController();
   const { tipoCitas } = useTipoCitasController();
   const { citasFiltradas, cambiarOdontologo, cambiarSede, cambiarTipoCita, filtrar, cambiarFecha  } = useFiltrarCitas(citas);
-  console.log("DATA22222", historiales)
   if (loading) {
     return <Spinner/>;
   }
@@ -28,8 +26,8 @@ function Citas() {
    }
   return (
     <Fragment>
-      <div  className="search_container">
-        <div className="search_input">
+      <div className="search_container">
+      <div className="search_input">
           <input onChange={ cambiarFecha } type={'date'}></input>
         </div>
         <div className="search_input">
@@ -62,29 +60,8 @@ function Citas() {
           </select>              
         </div>
         <div className="search_input">
-          <label for="idSede">Odontologo: </label>
-          <select
-            className="form-control us-cn selectRegistro search_input"
-            id="idOdonto"
-            name="idOdontologo"
-            onChange={ cambiarOdontologo }
-          >
-             <option selected>Elige...</option>
-               {odontologos.map((odontologo) => (
-                  <option value={odontologo._id}>{odontologo.nombre} {odontologo.apellidos}</option>
-                ))}
-    
-          </select>              
-        </div>
-        <div className="search_input">
           <button onClick={filtrar}  className="btn btnAdd " >buscar</button>
         </div>
-      </div>
-      <div className="btnAdd">
-        <Link to={"/citas/nueva"}>
-          <FontAwesomeIcon icon={faPlus} className="add"></FontAwesomeIcon>
-          <label className="add">Nueva cita</label>
-        </Link>
       </div>
       <div className="contenedorTable">
         <div className="tableTitle">
@@ -99,10 +76,10 @@ function Citas() {
                   <th>Fecha</th>
                   <th>Hora</th>
                   <th>Tipo cita</th>
-                  <th>Profesional</th>
                   <th>Sede</th>
                   {/* <th>Estado</th> */}
                   <th>Acciones</th>
+                  <th>Historial</th>
                 </tr>
               </thead>
               <tbody>
@@ -117,4 +94,4 @@ function Citas() {
     </Fragment>
   );
 }
-export default Citas;
+export default CitasOdontologo;

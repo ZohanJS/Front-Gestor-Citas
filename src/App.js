@@ -15,6 +15,11 @@ import NuevoCupo from './componentes/cupos/NuevoCupo';
 
 import Horarios from './componentes/horario/Horarios';
 
+import Historial from './componentes/historial/historiales';
+import NuevoHistorial from "./componentes/historial/NuevoHistorial";
+
+import CitasOdontologo from './componentes/CitasOdontologo/Citas';
+
 import Pedidos from './componentes/pedidos/Pedidos';
 import NuevoPedido from './componentes/pedidos/NuevoPedido';
 import Login from './componentes/auth/Login';
@@ -52,7 +57,10 @@ function App() {
                 <Route exact path="/cupos/nuevo" component={NuevoCupo} />
                 <Route exact path="/cupos/editar/" component={EditarCupo} />
                 <Route exact path="/citas" component={Citas} />
+                <Route exact path="/citasOdondologo" component={CitasOdontologo} />
                 <Route exact path="/perfil" component={Perfil} />
+                <Route exact path="/historial/:idCita" component={Historial} />
+                <Route exact path="/historial/nuevo/:idCita" component={NuevoHistorial} />
                 /restabler-contraseña
               </Switch>
             </main>
