@@ -31,6 +31,7 @@ import Citas from './componentes/Citas/Citas';
 import NuevaCita from './componentes/Citas/NuevaCita';
 import Inicio from './componentes/layout/Inicio';
 import Perfil from './componentes/Perfil/Perfil';
+import Docs from './componentes/Docs/Docs';
 
 function App() {
   return (
@@ -62,6 +63,7 @@ function App() {
                 <Route exact path="/citas/nueva" component={NuevaCita} />
                 <Route exact path="/citas/editar" component={Citas} />
                 <Route exact path="/perfil" component={Perfil} />
+                <Route exact path="/docs" component={Docs} />
                 <Route exact path="/historial/:idCita" component={Historial} />
                 <Route exact path="/historial/nuevo/:idCita" component={NuevoHistorial} />
                 /restabler-contraseña
