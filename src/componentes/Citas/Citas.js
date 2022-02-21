@@ -83,7 +83,7 @@ function Citas() {
       <div className="btnAdd">
         <Link to={"/citas/nueva"}>
           <FontAwesomeIcon icon={faPlus} className="add"></FontAwesomeIcon>
-          <label className="add">Nueva cita</label>
+          <label className="add">Reservar Cita</label>
         </Link>
       </div>
       <div className="contenedorTable">
