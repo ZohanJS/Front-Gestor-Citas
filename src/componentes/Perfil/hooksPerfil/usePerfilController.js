@@ -5,7 +5,7 @@ import { CRMContext } from "../../../context/CRMContext";
 
 export function usePerfilController() {
   const { push } = useHistory()
-  const [perfil, guardarPerfil] = useState([]);
+  const [perfil, guardarPerfil] = useState({});
   const [auth] = useContext(CRMContext);
   if(auth.rol === "usuario" || auth.rol === "administrador" ){
     var url = `/api/auth/profile/${auth.uid}`;

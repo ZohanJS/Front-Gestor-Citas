@@ -9,9 +9,14 @@
   
   .containerPerfil h4 {
     font-weight: 900;
-    color: var(--text);
+    color:  #3D82DB;
     font-size: 45px;
     padding-bottom: 10px;
+    text-align: right;
+  }
+
+  .titulo {
+    color:  #3D82DB;
   }
 
   .grillaPerfil {
@@ -22,16 +27,16 @@
     font-size: 24px;
   }
 
-  .botoneraPerfil {
+  
+  .botoneraPerfil{
     position: relative;
     display: flex;
     align-items: flex-end;
     width: auto;
     margin: 2em;
-    transform:translateX(80px)
   }
 
-  .botonesPerfil {
+  .botonesPerfil{
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
@@ -49,7 +54,7 @@
     margin: auto;
   }
 
-  .btn_registroSede {
+  .btn_registroPerfil {
     border-radius: 18px !important;
     margin-bottom: 40px;
     background-color: #13253c !important;
@@ -61,17 +66,10 @@
     margin: auto;
   }
   
-  .btn2registroSede {
+  .btn2registroPerfil {
     margin-top: 40px;
     background-color: #3d82db !important;
   }
 
-  #horaInicio{
-    width:100%;
-    
-  }
+
   
-  #horaFin{
-    width:100%;
-    
-  }

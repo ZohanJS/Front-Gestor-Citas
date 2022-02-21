@@ -31,7 +31,8 @@ import Citas from './componentes/Citas/Citas';
 import NuevaCita from './componentes/Citas/NuevaCita';
 import Inicio from './componentes/layout/Inicio';
 import Perfil from './componentes/Perfil/Perfil';
-
+import EditarCita from './componentes/Citas/EditarCita'
+import EditarPerfil from './componentes/Perfil/EditarPerfil';
 function App() {
   return (
     <Router>
@@ -60,8 +61,9 @@ function App() {
                 <Route exact path="/citas" component={Citas} />
                 <Route exact path="/citasOdondologo" component={CitasOdontologo} />
                 <Route exact path="/citas/nueva" component={NuevaCita} />
-                <Route exact path="/citas/editar" component={Citas} />
+                <Route exact path="/citas/editar" component={EditarCita} />
                 <Route exact path="/perfil" component={Perfil} />
+                <Route exact path="/perfil/editar" component={EditarPerfil} />
                 <Route exact path="/historial/:idCita" component={Historial} />
                 <Route exact path="/historial/nuevo/:idCita" component={NuevoHistorial} />
                 /restabler-contraseña

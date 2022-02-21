@@ -1,17 +1,15 @@
-import React, { Fragment, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import React, { Fragment } from 'react';
+import { useEditarPerfilController } from './hooksPerfil/useEditarPerfilController';
+// import { Perfil } from './Perfil'
+import { useLocation } from 'react-router-dom';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTooth } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import { usePerfilController } from "./hooksPerfil/usePerfilController";
-import { CRMContext } from '../../context/CRMContext';
-import {Button} from 'reactstrap';
-import "./Perfil.css";
 
-function Perfil() {
-    const { perfil } = usePerfilController();
-    const { push } = useHistory();
-    const [auth, guardarAuth] = useContext(CRMContext);
-    if (!auth.auth) { push('/iniciar-sesion'); }
-    
+function EditarPerfil({ }) {
+    const { state } = useLocation()
+    const { editarPerfil, handleChange, perfil } = useEditarPerfilController(state.perfil)
+    console.log("Datos Perfil", perfil);
     let fechaNacimiento;
     if (!!perfil.fechaNacimiento) {
         fechaNacimiento = perfil.fechaNacimiento.split('T')[0];
@@ -23,7 +21,7 @@ function Perfil() {
     return (
         <Fragment>
             <h2 className="titulo">Perfil</h2>
-            <form className="containerFormularioPerfil">
+            <form className="containerFormularioPerfil" onSubmit={editarPerfil}>
                 <div>
                     <div className="grillaPerfil">
                         <div>
@@ -76,9 +74,10 @@ function Perfil() {
                                 className="form-control us-cn"
                                 placeholder="E-mail"
                                 type="text"
+                                name='email'
                                 value={perfil.email}
-                                disabled
-
+                                onChange={handleChange}
+                                required
                             />
                         </div>
 
@@ -88,19 +87,33 @@ function Perfil() {
                                 className="form-control us-cn"
                                 placeholder="Telefono"
                                 type="number"
+                                name='telefono'
                                 value={perfil.telefono}
-                                disabled
+                                onChange={handleChange}
+                                required
                             />
+                        </div>
+                        <div className="botoneraPerfil">
+                            <div className='botonesPerfil'>
+                                <Link to={"/perfil"}>
+                                    <input
+                                        type="button"
+                                        value="Cancelar"
+                                        className="btn_registroPerfil btn btn-primary"
+                                    />
+                                </Link>
+                                <input
+                                    type="submit"
+                                    className="btn_registroPerfil btn btn-primary btn2registroPerfil"
+                                    value="Editar"
+                                ></input>
+                            </div>
                         </div>
                     </div>
                 </div>
             </form>
-            <div className="btnAdd">
-            
-              <Button onClick={() => push('/perfil/editar', { perfil })} className="btnIcon">Editar perfil</Button>
-    
-            </div>
         </Fragment>
-    );
+    )
 }
-export default Perfil;
+
+export default EditarPerfil

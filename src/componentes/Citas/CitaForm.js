@@ -35,7 +35,6 @@ export function CitaForm({
     tipoCita: ''
   }
   const { push } = useHistory()
-  // console.log(cita);
   console.log(odontologos);
   const [auth, guardarAuth] = useContext(CRMContext);
   const { tipoCitas } = useTipoCitasController();

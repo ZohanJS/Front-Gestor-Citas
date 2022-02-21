@@ -54,20 +54,3 @@ function Sede({sede}) {
     )
 }
 export default Sede;
-
- // function horarioSede(hora) {
-    //     let horas = hora.split(':');
-    //     let data = '';  
-    //     if(parseInt(horas[0]) < 12) {
-    //     return data = `${hora} AM`
-    //     }
-    //     else{
-    //     if(parseInt(horas[0]) == 12) {
-    //         return data = `${hora} PM`
-    //     } 
-    //     if(parseInt(horas[0]) == 0) {
-    //         return data = `${horas[0]+12}:${horas[1]} AM`
-    //     } 
-    //     return data = `${horas[0]-12}:${horas[1]} PM`
-    //     }
-    // }
