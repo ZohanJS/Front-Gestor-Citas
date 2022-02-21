@@ -36,7 +36,7 @@ export function useFiltrarCitas(citas){
             nuevaLista = [ ...nuevaLista.filter(cita => cita.tipoCita._id === tipoCitaSeleccionada)]
         }
         if(odontologoSeleccionado){
-            nuevaLista = [ ...nuevaLista.filter(cita => cita.idOdontologo === odontologoSeleccionado)]
+            nuevaLista = [ ...nuevaLista.filter(cita => cita.idOdontologo._id === odontologoSeleccionado)]
         }
         if(fechaSeleccionada){
             nuevaLista = [ ...nuevaLista.filter(cita => cita.idHorario.fecha === fechaSeleccionada)]
