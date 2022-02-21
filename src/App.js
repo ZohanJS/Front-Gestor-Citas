@@ -15,6 +15,11 @@ import NuevoCupo from './componentes/cupos/NuevoCupo';
 
 import Horarios from './componentes/horario/Horarios';
 
+import Historial from './componentes/historial/historiales';
+import NuevoHistorial from "./componentes/historial/NuevoHistorial";
+
+import CitasOdontologo from './componentes/CitasOdontologo/Citas';
+
 import Pedidos from './componentes/pedidos/Pedidos';
 import NuevoPedido from './componentes/pedidos/NuevoPedido';
 import Login from './componentes/auth/Login';
@@ -23,6 +28,7 @@ import Restablecer_contraseña1 from './componentes/auth/Restablecer_contraseña
 import Registrarse from './componentes/auth/Registrarse';
 import { CRMProvider } from './context/CRMContext';
 import Citas from './componentes/Citas/Citas';
+import NuevaCita from './componentes/Citas/NuevaCita';
 import Inicio from './componentes/layout/Inicio';
 import Perfil from './componentes/Perfil/Perfil';
 
@@ -52,7 +58,12 @@ function App() {
                 <Route exact path="/cupos/nuevo" component={NuevoCupo} />
                 <Route exact path="/cupos/editar/" component={EditarCupo} />
                 <Route exact path="/citas" component={Citas} />
+                <Route exact path="/citasOdondologo" component={CitasOdontologo} />
+                <Route exact path="/citas/nueva" component={NuevaCita} />
+                <Route exact path="/citas/editar" component={Citas} />
                 <Route exact path="/perfil" component={Perfil} />
+                <Route exact path="/historial/:idCita" component={Historial} />
+                <Route exact path="/historial/nuevo/:idCita" component={NuevoHistorial} />
                 /restabler-contraseña
               </Switch>
             </main>

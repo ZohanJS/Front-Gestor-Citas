@@ -1,0 +1,79 @@
+.logo {
+  position: absolute;
+  color: var(--light);
+  font-size: 8em;
+  top: 20%;
+  left:80%;
+}
+.containerFormularioCita {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: CENTER;
+    width: 100%;
+    height: 80%;
+    margin-top:40px;
+  }
+  
+  .containerFormularioCita h4 {
+    font-weight: 900;
+    color: var(--text);
+    font-size: 45px;
+    padding-bottom: 10px;
+  }
+  .DivCliente 
+  {
+    color: var(--text);
+    font-size: 20px;
+    width:40%;
+  }
+
+  .grillaCita {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    color: var(--text);
+    font-size: 24px;
+    margin-right:70px;
+  }
+  .controlInputCita
+  {
+    margin:20px;
+  }
+
+  .botoneraCita {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    width: auto;
+  }
+
+  .botonesCita {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    margin:10px;
+  }
+
+  .btn_registroCita {
+    border-radius: 18px !important;
+    background-color: #13253c !important;
+    border: 0 !important;
+    text-align: center !important;
+    font-size: 22px;
+    width: 150px;
+    margin: auto;
+  }
+  
+  .btn2registroCita {
+    background-color: #3d82db !important;
+    margin:0px !important;
+  }
+
+  #horaInicio{
+    width:100%;
+    
+  }
+  
+  #horaFin{
+    width:100%;
+    
+  }

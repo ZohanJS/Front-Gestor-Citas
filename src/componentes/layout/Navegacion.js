@@ -41,7 +41,8 @@ const Navegacion = (props) => {
                     )
                     :
                     (<><Link to={"/perfil"} className="perfil">Perfil</Link>
-                        <Link to={"/citas"} className="citas">Mis citas</Link></>
+                        <Link to={"/citasOdondologo"} className="citas">Mis citas</Link>
+                        </>
                     )
                     
                 }

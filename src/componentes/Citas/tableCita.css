@@ -1,0 +1,89 @@
+:root {
+  --azulOscuro: #2c5891;
+  --azulClaro: #3d82db;
+  --rojo: #a01c48;
+  --naranja: #f58549;
+  --blanco: #edf5ff;
+  --verde: #14a02c;
+
+  --gris: #969696;
+  --grisOscuro: #707070;
+  --grisClaro: #edf5ff;
+}
+
+
+.contenedorTableCita {
+  position: relative;
+  transform: translate(200px, -30px);
+  background: var(--azulClaro);
+  width: 600px;
+  height: 424px;
+  margin: auto;
+  padding: 10px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.tableTitleCita {
+  width: 100%;
+  background: var(--azulClaro);
+  position: relative;
+  top: 0px;
+}
+h2 {
+  font-size: 2.5vw;
+  margin-left: 15px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+#tableTitleCita {
+  color: var(--blanco);
+  size: auto;
+  font-size: 3rem;
+  margin-left: 15px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  font-family: "Ubuntu";
+}
+.tableModelCita {
+  position: relative;
+  height: 70%;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+}
+th {
+  top: 0;
+  size: auto;
+  font-size: 1.5rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+th,td {
+  text-align: center;
+  padding: 11px;
+  color: white;
+}
+
+
+td {
+  border-bottom: 0.3px solid var(--azulOscuro);
+}
+
+tr:hover td {
+  background-color: var(--azulOscuro);
+  color: white;
+}
+
+.tableModelCita::-webkit-scrollbar {
+  width: 12px;
+}
+.tableModelCita::-moz-scrollbar {
+  width: 12px;
+}
+
+.tableModelCita::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(44, 88, 145, 0.6);
+}
