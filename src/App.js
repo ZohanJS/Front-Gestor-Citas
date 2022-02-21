@@ -58,12 +58,9 @@ function App() {
                 <Route exact path="/cupos/nuevo" component={NuevoCupo} />
                 <Route exact path="/cupos/editar/" component={EditarCupo} />
                 <Route exact path="/citas" component={Citas} />
-<<<<<<< HEAD
                 <Route exact path="/citasOdondologo" component={CitasOdontologo} />
-=======
                 <Route exact path="/citas/nueva" component={NuevaCita} />
                 <Route exact path="/citas/editar" component={Citas} />
->>>>>>> 8abfdcc799be14dedc85d444c9f3ce728ac17f5e
                 <Route exact path="/perfil" component={Perfil} />
                 <Route exact path="/historial/:idCita" component={Historial} />
                 <Route exact path="/historial/nuevo/:idCita" component={NuevoHistorial} />
