@@ -95,10 +95,13 @@ function Perfil() {
                     </div>
                 </div>
             </form>
-            <div className="btnAdd">
+            <div className="btnAddPerfil backgroundAzul">
             
-              <Button onClick={() => push('/perfil/editar', { perfil })} className="btnIcon">Editar perfil</Button>
+              <Button onClick={() => push('/perfil/editar', { perfil })} className="btnIcon btnPerfil">Editar perfil</Button>
     
+            </div>
+            <div className="btnAddPerfil "> 
+                <Button onClick={() => push('/perfil/editar/password')} className="btnIcon btnPerfil">Editar contraseña</Button>
             </div>
         </Fragment>
     );

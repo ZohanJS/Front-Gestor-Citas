@@ -20,7 +20,7 @@ function EditarPerfil({ }) {
 
     return (
         <Fragment>
-            <h2 className="titulo">Perfil</h2>
+            <h2 className="titulo">Editar perfil</h2>
             <form className="containerFormularioPerfil" onSubmit={editarPerfil}>
                 <div>
                     <div className="grillaPerfil">

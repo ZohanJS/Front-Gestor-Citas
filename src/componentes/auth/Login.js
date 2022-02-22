@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import './Login.css';
 import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTooth} from "@fortawesome/free-solid-svg-icons";
+import { faTooth } from "@fortawesome/free-solid-svg-icons";
 
 
 import Swal from "sweetalert2";
@@ -15,7 +15,7 @@ function Login(props) {
   const { push } = useHistory();
   const [auth, guardarAuth] = useContext(CRMContext);
   const [credenciales, guardarCredenciales] = useState({});
-  if(auth.auth) {push('/');}
+  if (auth.auth) { push('/'); }
   const iniciarSesion = async (e) => {
     e.preventDefault();
 
@@ -24,23 +24,34 @@ function Login(props) {
         "/api/auth/login",
         credenciales
       );
+      console.log(respuesta);
 
-      const { token, rol, uid, name } = respuesta.data;
-      localStorage.setItem("token", token);
-      localStorage.setItem("rol", rol);
-      localStorage.setItem("uid", uid);
-      localStorage.setItem("name", name);
+      if (respuesta.data.ok) {
+        const { token, rol, uid, name } = respuesta.data;
+        localStorage.setItem("token", token);
+        localStorage.setItem("rol", rol);
+        localStorage.setItem("uid", uid);
+        localStorage.setItem("name", name);
 
-      guardarAuth({
-        token,
-        auth: true,
-        rol,
-        uid,
-        name
-      });
+        guardarAuth({
+          token,
+          auth: true,
+          rol,
+          uid,
+          name
+        });
 
-      Swal.fire("Login Correcto", "Has iniciado Sesión", "success");
-      props.history.push("/");
+        Swal.fire("Login Correcto", "Has iniciado Sesión", "success");
+        props.history.push("/");
+      }
+      else{
+        Swal.fire({
+          type: "error",
+          title: "Hubo un error",
+          text: respuesta.data.msg,
+        });
+      }
+
     } catch (error) {
       Swal.fire({
         type: "error",
@@ -60,10 +71,10 @@ function Login(props) {
   return (
     <div className="containerPrincipal">
       <div className="logoBox">
-        <FontAwesomeIcon icon={ faTooth} className="logoLogin"></FontAwesomeIcon>
+        <FontAwesomeIcon icon={faTooth} className="logoLogin"></FontAwesomeIcon>
       </div>
       <h2 className="is">Iniciar Sesión</h2>
-        <form onSubmit={iniciarSesion}
+      <form onSubmit={iniciarSesion}
         className="form form-group">
         <div className="containerSecundario">
           <label>Usuario: </label>
@@ -85,15 +96,15 @@ function Login(props) {
             onChange={leerDatos}
             className="form-control us-cn"
           />
-         
-          <a className="restablecer_login" href="" onClick={()=> props.history.push("/restablecer_contraseña")} value="Restablecer contraseña">Restablecer contraseña</a>
 
-          </div>
-          <div className='botonesLogin'>
-            <input type="submit" className="btn_login btn btn-primary" value="Entrar"></input>
-            <input type="button" className="btn_login btn btn-primary btn2" onClick={()=> props.history.push("/registro")} value="Crear cuenta"></input>
-         </div>
-        </form>
+          <a className="restablecer_login" href="" onClick={() => props.history.push("/restablecer_contraseña")} value="Restablecer contraseña">Restablecer contraseña</a>
+
+        </div>
+        <div className='botonesLogin'>
+          <input type="submit" className="btn_login btn btn-primary" value="Entrar"></input>
+          <input type="button" className="btn_login btn btn-primary btn2" onClick={() => props.history.push("/registro")} value="Crear cuenta"></input>
+        </div>
+      </form>
     </div>
   );
 }

@@ -33,6 +33,7 @@ import Inicio from './componentes/layout/Inicio';
 import Perfil from './componentes/Perfil/Perfil';
 import EditarCita from './componentes/Citas/EditarCita'
 import EditarPerfil from './componentes/Perfil/EditarPerfil';
+import EditarContraseña from './componentes/Perfil/EditarContraseña';
 import Docs from './componentes/Docs/Docs';
 
 function App() {
@@ -66,6 +67,7 @@ function App() {
                 <Route exact path="/citas/editar" component={EditarCita} />
                 <Route exact path="/perfil" component={Perfil} />
                 <Route exact path="/perfil/editar" component={EditarPerfil} />
+                <Route exact path="/perfil/editar/password" component={EditarContraseña} />
                 <Route exact path="/docs" component={Docs} />
                 <Route exact path="/historial/:idCita" component={Historial} />
                 <Route exact path="/historial/nuevo/:idCita" component={NuevoHistorial} />

@@ -72,4 +72,27 @@
   }
 
 
+  .btnAddPerfil {
+    background: var(--azulClaro);
+    width: 183px;
+    height: 44px;
+    border-radius: 16px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    top: 15%;
+    left: 90%;
+    margin: 1em;
+    padding: 5px;
+  }
+
+  .btnPerfil:hover{
+    background: transparent;
+  }
+
+  .backgroundAzul{
+    background: var(--azulOscuro)
+  }
   
